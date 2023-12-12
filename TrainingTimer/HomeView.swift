@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  MuscleTrainingTimer
+//  TrainingTimer
 //
 //  Created by 住田雅隆 on 2023/12/10.
 //
