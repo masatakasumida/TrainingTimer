@@ -10,32 +10,29 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedTab: Int = 1
 
-    init() {
-        UITabBar.appearance().backgroundColor = .clear
-    }
-
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
                 HomeView()
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("ホーム", systemImage: "house")
+                            .font(.notoSans(style: .SemiBold, size: 19))
                     }
                     .tag(1)
 
                 EditTimerView()
                     .tabItem {
-                        Label("Timer", systemImage: "clock.arrow.circlepath")
+                        Label("履歴編集", systemImage: "clock.arrow.circlepath")
                     }
                     .tag(2)
 
                 SettingsView()
                     .tabItem {
-                        Label("Settings", systemImage: "gear")
+                        Label("設定", systemImage: "gear")
                     }
                     .tag(3)
             }
-
+            .tint(.white)
             AdView()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)

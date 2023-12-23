@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 extension Color {
     static func hex(_ hex: Int, alpha: CGFloat = 1.0) -> Color {
@@ -24,4 +25,41 @@ extension Color {
             }
         })
     }
+
+    static let textColor = hex(0x6D6D6D)
+    static let white = hex(0xFDFCFF)
+    static let toolBarColor = hex(0x4499E1)
+    static let startButtonColor = hex(0x4499E1)
+    static let circleColor = hex(0x3394E0)
+    static let controlPanelColor = hex(0x3394E0)
+    static let controlPanelBackgroundColor = hex(0xEAF4FF, alpha: 0.4)
+    static let tabBarUnselectedColor = hex(0xB2D7FD)
+}
+
+extension UIColor {
+    static func hex(_ hex: Int, alpha: CGFloat = 1.0) -> UIColor {
+        let r = CGFloat((hex >> 16) & 0xff) / 255.0
+        let g = CGFloat((hex >> 8) & 0xff) / 255.0
+        let b = CGFloat(hex & 0xff) / 255.0
+        return UIColor(red: r, green: g, blue: b, alpha: alpha)
+    }
+
+    static func | (lightMode: UIColor, darkMode: UIColor) -> UIColor {
+        return UIColor { traitCollection -> UIColor in
+            if traitCollection.userInterfaceStyle == .light {
+                return lightMode
+            } else {
+                return darkMode
+            }
+        }
+    }
+
+    static let textColor = hex(0x6D6D6D)
+    static let white = hex(0xFDFCFF)
+    static let toolBarColor = hex(0x4499E1)
+    static let startButtonColor = hex(0x4499E1)
+    static let circleColor = hex(0x3394E0)
+    static let controlPanelColor = hex(0x3394E0)
+    static let controlPanelBackgroundColor = hex(0xEAF4FF)
+    static let tabBarUnselectedColor = hex(0xB2D7FD)
 }
