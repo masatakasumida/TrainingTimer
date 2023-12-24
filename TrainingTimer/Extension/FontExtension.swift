@@ -11,16 +11,16 @@ import UIKit
 extension Font {
 
     enum BorderStyle: String {
-        case Black = "NotoSansJP-Black"
-        case Bold = "NotoSansJP-Bold"
-        case ExtraBold = "NotoSansJP-ExtraBold"
-        case ExtraLight = "NotoSansJP-ExtraLight"
-        case Light = "NotoSansJP-Light"
-        case Medium = "NotoSansJP-Medium"
-        case Regular = "NotoSansJP-Regular"
-        case SemiBold = "NotoSansJP-SemiBold"
-        case Thin = "NotoSansJP-Thin"
-        case VariableFont_wght = "NotoSansJP-VariableFont_wght"
+        case black = "NotoSansJP-Black"
+        case bold = "NotoSansJP-Bold"
+        case extraBold = "NotoSansJP-ExtraBold"
+        case extraLight = "NotoSansJP-ExtraLight"
+        case light = "NotoSansJP-Light"
+        case medium = "NotoSansJP-Medium"
+        case regular = "NotoSansJP-Regular"
+        case semiBold = "NotoSansJP-SemiBold"
+        case thin = "NotoSansJP-Thin"
+        case variableFont_wght = "NotoSansJP-VariableFont_wght"
     }
 
     static func notoSans(style: BorderStyle, size: CGFloat) -> Font {
@@ -31,16 +31,16 @@ extension Font {
 extension UIFont {
 
     enum BorderStyle: String {
-        case Black = "NotoSansJP-Black"
-        case Bold = "NotoSansJP-Bold"
-        case ExtraBold = "NotoSansJP-ExtraBold"
-        case ExtraLight = "NotoSansJP-ExtraLight"
-        case Light = "NotoSansJP-Light"
-        case Medium = "NotoSansJP-Medium"
-        case Regular = "NotoSansJP-Regular"
-        case SemiBold = "NotoSansJP-SemiBold"
-        case Thin = "NotoSansJP-Thin"
-        case VariableFont_wght = "NotoSansJP-VariableFont_wght"
+        case black = "NotoSansJP-Black"
+        case bold = "NotoSansJP-Bold"
+        case extraBold = "NotoSansJP-ExtraBold"
+        case extraLight = "NotoSansJP-ExtraLight"
+        case light = "NotoSansJP-Light"
+        case medium = "NotoSansJP-Medium"
+        case regular = "NotoSansJP-Regular"
+        case semiBold = "NotoSansJP-SemiBold"
+        case thin = "NotoSansJP-Thin"
+        case variableFont_wght = "NotoSansJP-VariableFont_wght"
     }
 
     static func notoSans(style: BorderStyle, size: CGFloat) -> UIFont {

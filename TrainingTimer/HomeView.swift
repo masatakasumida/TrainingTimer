@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var trainingState: TrainingState = .ready
     @State private var progressValue: Float = 0.2
 
     var body: some View {
@@ -15,20 +16,21 @@ struct HomeView: View {
             GeometryReader { geometry in
                 VStack(spacing: geometry.size.height * 0.065) {
                     Divider()
+                        .background(Color.controlPanelColor)
                     ZStack() {
                         Circle()
-                            .stroke(Color.circleColor, lineWidth: 20)
+                            .stroke(Color.progressColor, lineWidth: 20)
                             .opacity(0.2)
 
                         Circle()
                             .trim(from: 0.0, to: CGFloat(min(self.progressValue, 1.0)))
                             .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                            .foregroundStyle(Color.circleColor)
+                            .foregroundStyle(Color.progressColor)
                             .rotationEffect(Angle(degrees: 270.0))
                             .animation(.linear, value: progressValue)
 
                         Text("\(Int(self.progressValue * 100))")
-                            .font(.notoSans(style: .ExtraBold, size: geometry.size.height * 0.14))
+                            .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.14))
                             .foregroundStyle(Color.textColor)
                     }
                     .frame(width: geometry.size.height * 0.4, height: geometry.size.height * 0.4)
@@ -45,13 +47,13 @@ struct HomeView: View {
                                 ZStack (alignment: .top) {
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.controlPanelColor, lineWidth: 3)
-                                        .background(Color.white.cornerRadius(5))
+                                        .background(Color.whiteColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.17)
                                         .overlay(
                                             Text("5")
                                                 .foregroundStyle(Color.textColor)
                                                 .padding([.top], geometry.size.width * 0.11)
-                                                .font(.notoSans(style: .Bold, size:geometry.size.height * 0.08))
+                                                .font(.notoSans(style: .bold, size:geometry.size.height * 0.08))
                                         )
                                     Rectangle()
                                         .fill(Color.controlPanelColor)
@@ -59,20 +61,20 @@ struct HomeView: View {
                                         .clipShape(RoundedCorner(radius: 5, corners: [.topLeft, .topRight]))
                                         .overlay(
                                             Text("セット"))
-                                        .font(.notoSans(style: .Bold, size: geometry.size.height * 0.04))
-                                        .foregroundStyle(Color.white)
+                                        .font(.notoSans(style: .bold, size: geometry.size.height * 0.04))
+                                        .foregroundStyle(Color.whiteColor)
                                 }
 
                                 ZStack (alignment: .top) {
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.controlPanelColor, lineWidth: 3)
-                                        .background(Color.white.cornerRadius(5))
+                                        .background(Color.whiteColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.17)
                                         .overlay(
                                             Text("20")
                                                 .foregroundStyle(Color.textColor)
                                                 .padding([.top], geometry.size.width * 0.11)
-                                                .font(.notoSans(style: .Bold, size:geometry.size.height * 0.08))
+                                                .font(.notoSans(style: .bold, size:geometry.size.height * 0.08))
                                         )
                                     Rectangle()
                                         .fill(Color.controlPanelColor)
@@ -80,21 +82,16 @@ struct HomeView: View {
                                         .clipShape(RoundedCorner(radius: 5, corners: [.topLeft, .topRight]))
                                         .overlay(
                                             Text("回数"))
-                                        .font(.notoSans(style: .Bold, size: geometry.size.height * 0.04))
-                                        .foregroundStyle(Color.white)
+                                        .font(.notoSans(style: .bold, size: geometry.size.height * 0.04))
+                                        .foregroundStyle(Color.whiteColor)
                                 }
                             }
 
-
-                            Button(action: {}) {
-                                Text("スタート")
-                                    .font(.notoSans(style: .Bold, size: geometry.size.width * 0.06))
+                            if trainingState == .ready {
+                                startButton(geometry: geometry)
+                            } else {
+                                pauseAndStopButtons(geometry: geometry)
                             }
-                            .padding()
-                            .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.1)
-                            .background(Color.startButtonColor)
-                            .foregroundStyle(Color.white)
-                            .cornerRadius(10)
                         }
                     }
                 }
@@ -104,8 +101,58 @@ struct HomeView: View {
                     Image(systemName: "pencil.circle")
                 })
             }
-            .background(Color.white)
-            .tint(Color.white)
+            .background(Color.whiteColor)
+            .tint(Color.whiteColor)
+        }
+    }
+
+    private func startButton(geometry: GeometryProxy) -> some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                trainingState = .running
+            }
+        }) {
+            Text("スタート")
+
+                .font(.notoSans(style: .bold, size: geometry.size.width * 0.06))
+                .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.1)
+                .background(Color.startButtonColor)
+                .foregroundColor(Color.whiteColor)
+                .cornerRadius(10)
+
+        }
+        .buttonStyle(CustomButtonStyle())
+    }
+
+    private func pauseAndStopButtons(geometry: GeometryProxy) -> some View {
+        HStack(spacing: geometry.size.width * 0.08) {
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    trainingState = .ready
+                }
+            }) {
+                Text("一時停止")
+                    .font(.notoSans(style: .bold, size: geometry.size.width * 0.05))
+                    .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.1)
+                    .background(Color.startButtonColor)
+                    .foregroundColor(Color.whiteColor)
+                    .cornerRadius(5)
+            }
+            .buttonStyle(CustomButtonStyle())
+
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    trainingState = .ready
+                }
+            }) {
+                Text("ストップ")
+                    .font(.notoSans(style: .bold, size: geometry.size.width * 0.05))
+                    .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.1)
+                    .background(Color.startButtonColor)
+                    .foregroundColor(Color.whiteColor)
+                    .cornerRadius(5)
+            }
+            .buttonStyle(CustomButtonStyle())
         }
     }
 }

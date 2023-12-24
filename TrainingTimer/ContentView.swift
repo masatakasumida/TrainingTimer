@@ -16,7 +16,7 @@ struct ContentView: View {
                 HomeView()
                     .tabItem {
                         Label("ホーム", systemImage: "house")
-                            .font(.notoSans(style: .SemiBold, size: 19))
+                            .font(.notoSans(style: .semiBold, size: 19))
                     }
                     .tag(1)
 
@@ -32,7 +32,7 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
-            .tint(.white)
+            .tint(.whiteColor)
             AdView()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
