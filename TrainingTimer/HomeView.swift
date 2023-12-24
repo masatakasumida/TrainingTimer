@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var trainingState: TrainingState = .ready
-    @State private var progressValue: Float = 0.2
+    @StateObject private var viewState = HomeViewState()
 
     var body: some View {
         NavigationView {
@@ -23,13 +22,13 @@ struct HomeView: View {
                             .opacity(0.2)
 
                         Circle()
-                            .trim(from: 0.0, to: CGFloat(min(self.progressValue, 1.0)))
+                            .trim(from: 0.0, to: CGFloat(min(self.viewState.progressValue, 1.0)))
                             .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .foregroundStyle(Color.progressColor)
                             .rotationEffect(Angle(degrees: 270.0))
-                            .animation(.linear, value: progressValue)
+                            .animation(.linear, value: viewState.progressValue)
 
-                        Text("\(Int(self.progressValue * 100))")
+                        Text("\(Int(viewState.progressValue * 100))")
                             .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.14))
                             .foregroundStyle(Color.textColor)
                     }
@@ -87,7 +86,7 @@ struct HomeView: View {
                                 }
                             }
 
-                            if trainingState == .ready {
+                            if viewState.trainingState == .ready {
                                 startButton(geometry: geometry)
                             } else {
                                 pauseAndStopButtons(geometry: geometry)
@@ -109,7 +108,7 @@ struct HomeView: View {
     private func startButton(geometry: GeometryProxy) -> some View {
         Button(action: {
             withAnimation(.easeInOut(duration: 0.3)) {
-                trainingState = .running
+                viewState.changeTrainingState(to: .running)
             }
         }) {
             Text("スタート")
@@ -128,7 +127,7 @@ struct HomeView: View {
         HStack(spacing: geometry.size.width * 0.08) {
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
-                    trainingState = .ready
+                    viewState.changeTrainingState(to: .pause)
                 }
             }) {
                 Text("一時停止")
@@ -142,7 +141,7 @@ struct HomeView: View {
 
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
-                    trainingState = .ready
+                    viewState.changeTrainingState(to: .ready)
                 }
             }) {
                 Text("ストップ")

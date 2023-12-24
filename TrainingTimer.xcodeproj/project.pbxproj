@@ -12,8 +12,9 @@
 		690A81DD2B20A8F70012F215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DC2B20A8F70012F215 /* Assets.xcassets */; };
 		690A81E02B20A8F70012F215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */; };
 		6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */; };
-		691E29E72B37C09700E6817D /* TrainingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* TrainingState.swift */; };
+		691E29E72B37C09700E6817D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* Models.swift */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
+		698CE2202B382AD900CCC680 /* HomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21F2B382AD900CCC680 /* HomeViewState.swift */; };
 		699CFDC52B25A56D004F581A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC42B25A56D004F581A /* HomeView.swift */; };
 		699CFDC72B25A638004F581A /* EditTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC62B25A638004F581A /* EditTimerView.swift */; };
 		699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC82B25A65B004F581A /* SettingsView.swift */; };
@@ -38,8 +39,9 @@
 		690A81DC2B20A8F70012F215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		691E29E62B37C09700E6817D /* TrainingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingState.swift; sourceTree = "<group>"; };
+		691E29E62B37C09700E6817D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		698CE21F2B382AD900CCC680 /* HomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewState.swift; sourceTree = "<group>"; };
 		699CFDC42B25A56D004F581A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		699CFDC62B25A638004F581A /* EditTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimerView.swift; sourceTree = "<group>"; };
 		699CFDC82B25A65B004F581A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -92,9 +94,10 @@
 				690A81D62B20A8F60012F215 /* TrainingTimerApp.swift */,
 				690A81D82B20A8F60012F215 /* ContentView.swift */,
 				699CFDC42B25A56D004F581A /* HomeView.swift */,
+				698CE21F2B382AD900CCC680 /* HomeViewState.swift */,
 				699CFDC62B25A638004F581A /* EditTimerView.swift */,
 				699CFDC82B25A65B004F581A /* SettingsView.swift */,
-				691E29E62B37C09700E6817D /* TrainingState.swift */,
+				691E29E62B37C09700E6817D /* Models.swift */,
 				698CE21E2B380FE000CCC680 /* CustomButtons */,
 				699CFDCA2B25A7BC004F581A /* CustomShapes */,
 				69F7E3312B2420F900494FDF /* Extension */,
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				698CE2202B382AD900CCC680 /* HomeViewState.swift in Sources */,
 				699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */,
 				690A81D92B20A8F60012F215 /* ContentView.swift in Sources */,
 				69F7E3302B2420F500494FDF /* FontExtension.swift in Sources */,
@@ -242,7 +246,7 @@
 				698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */,
 				699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */,
 				699CFDC52B25A56D004F581A /* HomeView.swift in Sources */,
-				691E29E72B37C09700E6817D /* TrainingState.swift in Sources */,
+				691E29E72B37C09700E6817D /* Models.swift in Sources */,
 				699CFDC72B25A638004F581A /* EditTimerView.swift in Sources */,
 				690A81D72B20A8F60012F215 /* TrainingTimerApp.swift in Sources */,
 			);

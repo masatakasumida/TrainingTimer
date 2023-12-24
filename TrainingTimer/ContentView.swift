@@ -22,7 +22,7 @@ struct ContentView: View {
 
                 EditTimerView()
                     .tabItem {
-                        Label("履歴編集", systemImage: "clock.arrow.circlepath")
+                        Label("追加・編集", systemImage: "clock.arrow.circlepath")
                     }
                     .tag(2)
 

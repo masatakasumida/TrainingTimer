@@ -32,7 +32,7 @@ extension Color {
     static let startButtonColor = hex(0x4499E1)
     static let progressColor = hex(0x3394E0)
     static let controlPanelColor = hex(0x3394E0)
-    static let controlPanelBackgroundColor = hex(0xEAF4FF, alpha: 0.4)
+    static let controlPanelBackgroundColor = hex(0xEAF4FF, alpha: 0.7)
     static let tabBarUnselectedColor = hex(0xB2D7FD)
 }
 
