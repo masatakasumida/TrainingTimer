@@ -14,23 +14,28 @@ enum TrainingState {
     case pause
 }
 
-@Model
+//@Model
 final class TrainingMenu {
     let id: UUID
     var name: String
-    var restDuration: TimeInterval // 休憩時間（秒単位）
+    var trainingTime: Int // トレーニング時間
+    var restTime: Int // 休憩時間（秒単位）
     var repetitions: Int // 繰り返し回数
     var sets: Int // セット数
-    var restBetweenSets: TimeInterval // セット間の休憩時間（秒単位）
+    var restBetweenSets: Int // セット間の休憩時間（秒単位）
+    var readyTime: Int // トレーニング開始前の準備時間
     var creationDate: Date // 作成日
 
-    init(name: String, restDuration: TimeInterval, repetitions: Int, sets: Int, restBetweenSets: TimeInterval) {
+
+    init(name: String, trainingTime: Int,restDuration: Int, repetitions: Int, sets: Int, restBetweenSets: Int, readyTime: Int) {
         self.id = UUID()
         self.name = name
-        self.restDuration = restDuration
+        self.trainingTime = trainingTime
+        self.restTime = restDuration
         self.repetitions = repetitions
         self.sets = sets
         self.restBetweenSets = restBetweenSets
+        self.readyTime = readyTime
         self.creationDate = Date()
     }
 }

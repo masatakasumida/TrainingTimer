@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewState = HomeViewState()
-
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -18,22 +18,29 @@ struct HomeView: View {
                         .background(Color.controlPanelColor)
                     ZStack() {
                         Circle()
-                            .stroke(Color.progressColor, lineWidth: 20)
-                            .opacity(0.2)
-
+                            .stroke(viewState.progressColor, lineWidth: 20)
+                        // トレーニング用
                         Circle()
-                            .trim(from: 0.0, to: CGFloat(min(self.viewState.progressValue, 1.0)))
+                            .trim(from: 0.0, to: CGFloat(viewState.trainingProgressValue))
                             .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .foregroundStyle(Color.progressColor)
+                            .opacity(viewState.trainingProgressOpacity)
                             .rotationEffect(Angle(degrees: 270.0))
-                            .animation(.linear, value: viewState.progressValue)
-
-                        Text("\(Int(viewState.progressValue * 100))")
+                            .animation(.easeInOut(duration: 0.3), value: viewState.trainingProgressValue)
+                        Text("\(viewState.remainingTime)")
                             .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.14))
                             .foregroundStyle(Color.textColor)
+                        // 休憩用
+                        Circle()
+                            .trim(from: 0.0, to: CGFloat(viewState.restProgressValue))
+                            .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            .foregroundStyle(Color.progressColor)
+                            .opacity(viewState.restProgressOpacity)
+                            .rotationEffect(Angle(degrees: 270.0))
+                            .animation(.easeInOut(duration: 0.3), value: viewState.restProgressValue)
                     }
                     .frame(width: geometry.size.height * 0.4, height: geometry.size.height * 0.4)
-
+                    
                     ZStack {
                         // ストロークされた四角形
                         RoundedRectangle(cornerRadius: 10)
@@ -63,7 +70,7 @@ struct HomeView: View {
                                         .font(.notoSans(style: .bold, size: geometry.size.height * 0.04))
                                         .foregroundStyle(Color.whiteColor)
                                 }
-
+                                
                                 ZStack (alignment: .top) {
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.controlPanelColor, lineWidth: 3)
@@ -85,7 +92,7 @@ struct HomeView: View {
                                         .foregroundStyle(Color.whiteColor)
                                 }
                             }
-
+                            
                             if viewState.trainingState == .ready {
                                 startButton(geometry: geometry)
                             } else {
@@ -104,7 +111,7 @@ struct HomeView: View {
             .tint(Color.whiteColor)
         }
     }
-
+    
     private func startButton(geometry: GeometryProxy) -> some View {
         Button(action: {
             withAnimation(.easeInOut(duration: 0.3)) {
@@ -112,17 +119,17 @@ struct HomeView: View {
             }
         }) {
             Text("スタート")
-
+            
                 .font(.notoSans(style: .bold, size: geometry.size.width * 0.06))
                 .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.1)
                 .background(Color.startButtonColor)
                 .foregroundColor(Color.whiteColor)
                 .cornerRadius(10)
-
+            
         }
         .buttonStyle(CustomButtonStyle())
     }
-
+    
     private func pauseAndStopButtons(geometry: GeometryProxy) -> some View {
         HStack(spacing: geometry.size.width * 0.08) {
             Button(action: {
@@ -130,7 +137,7 @@ struct HomeView: View {
                     viewState.changeTrainingState(to: .pause)
                 }
             }) {
-                Text("一時停止")
+                Text(viewState.trainingState == .pause ? "再開" : "一時停止")
                     .font(.notoSans(style: .bold, size: geometry.size.width * 0.05))
                     .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.1)
                     .background(Color.startButtonColor)
@@ -138,7 +145,7 @@ struct HomeView: View {
                     .cornerRadius(5)
             }
             .buttonStyle(CustomButtonStyle())
-
+            
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
                     viewState.changeTrainingState(to: .ready)

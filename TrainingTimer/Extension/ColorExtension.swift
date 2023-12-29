@@ -30,10 +30,13 @@ extension Color {
     static let whiteColor = hex(0xFDFCFF)
     static let toolBarColor = hex(0x4499E1)
     static let startButtonColor = hex(0x4499E1)
-    static let progressColor = hex(0x3394E0)
+    static let trainingProgressBackgroundColor = hex(0x3394E0)
+    static let restProgressBackgroundColor = hex(0xB5E0D0)
+    static let progressColor = hex(0xC4C4C4)
     static let controlPanelColor = hex(0x3394E0)
     static let controlPanelBackgroundColor = hex(0xEAF4FF, alpha: 0.7)
     static let tabBarUnselectedColor = hex(0xB2D7FD)
+
 }
 
 extension UIColor {
