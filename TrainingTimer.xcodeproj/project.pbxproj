@@ -13,6 +13,7 @@
 		690A81E02B20A8F70012F215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */; };
 		6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */; };
 		691E29E72B37C09700E6817D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* Models.swift */; };
+		693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693529272B414D4E0040FA12 /* ViewExtension.swift */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
 		698CE2202B382AD900CCC680 /* HomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21F2B382AD900CCC680 /* HomeViewState.swift */; };
 		699CFDC52B25A56D004F581A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC42B25A56D004F581A /* HomeView.swift */; };
@@ -40,6 +41,7 @@
 		690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		691E29E62B37C09700E6817D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		693529272B414D4E0040FA12 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		698CE21F2B382AD900CCC680 /* HomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewState.swift; sourceTree = "<group>"; };
 		699CFDC42B25A56D004F581A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				69F7E32F2B2420F500494FDF /* FontExtension.swift */,
 				6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */,
+				693529272B414D4E0040FA12 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				69F7E3302B2420F500494FDF /* FontExtension.swift in Sources */,
 				6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */,
 				698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */,
+				693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */,
 				699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */,
 				699CFDC52B25A56D004F581A /* HomeView.swift in Sources */,
 				691E29E72B37C09700E6817D /* Models.swift in Sources */,

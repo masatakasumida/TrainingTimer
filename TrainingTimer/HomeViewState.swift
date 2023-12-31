@@ -17,8 +17,8 @@ final class HomeViewState: ObservableObject {
 
     @Published private(set) var remainingTime: Int = 0
 
-    @Published private(set) var trainingProgressOpacity = 0.8
-    @Published private(set) var restProgressOpacity = 0.0
+    @Published private(set) var trainingProgressIsHidden = false
+    @Published private(set) var restProgressIsHidden = false
 
     private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 5, restDuration: 3, repetitions: 3, sets: 3, restBetweenSets: 3, readyTime: 3)
     private var timer: Timer?
@@ -38,6 +38,7 @@ final class HomeViewState: ObservableObject {
                 self.updateTimer(for: state)
             }
             .store(in: &cancellables)
+
         remainingTime = sampleTrainingMenu.trainingTime
         currentSet = sampleTrainingMenu.sets
         currentRepetition = sampleTrainingMenu.repetitions
@@ -94,28 +95,38 @@ final class HomeViewState: ObservableObject {
     private func beginRestPeriod() {
         isResting = true
         remainingTime = remainingRestTime
-        trainingProgressOpacity = 0.0
-        restProgressOpacity = 0.8
-        trainingProgressValue = 0.0
-        progressColor = .restProgressBackgroundColor
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.trainingProgressIsHidden = true
+            self.restProgressIsHidden = false
+            self.progressColor = .restProgressBackgroundColor
+            self.trainingProgressValue = 0.0
+            self.remainingTrainingTime = self.trainingTime
+        }
+
     }
 
     private func beginNextSetOrRepetition() {
-        if currentRepetition < sampleTrainingMenu.repetitions {
-            currentRepetition += 1
-        } else if currentSet < sampleTrainingMenu.sets {
-            currentSet += 1
-            currentRepetition = 1
-        } else {
-            changeTrainingState(to: .ready)
-            return
-        }
+//        if currentRepetition < sampleTrainingMenu.repetitions {
+//            currentRepetition += 1
+//        } else if currentSet < sampleTrainingMenu.sets {
+//            currentSet += 1
+//            currentRepetition = 1
+//        } else {
+//            changeTrainingState(to: .ready)
+//            return
+//        }
         isResting = false
-        trainingProgressOpacity = 0.8
-        restProgressOpacity = 0.0
-        restProgressValue = 0.0
-        progressColor = .trainingProgressBackgroundColor
-        remainingRestTime = restTime
+        remainingTime = trainingTime
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.restProgressIsHidden = true
+            self.trainingProgressIsHidden = false
+            self.progressColor = .trainingProgressBackgroundColor
+            self.remainingRestTime = self.restTime
+            self.restProgressValue = 0.0
+        }
     }
 
     private func updateProgress(_ remainingTime: Int, _ originalTime: Int, isResting: Bool) {
@@ -142,8 +153,8 @@ final class HomeViewState: ObservableObject {
     private func resetStatus() {
         trainingProgressValue = 0.0
         restProgressValue = 0.0
-        restProgressOpacity = 0.0
-        trainingProgressOpacity = 0.7
+        trainingProgressIsHidden = false
+        restProgressIsHidden = false
         progressColor = .trainingProgressBackgroundColor
         remainingTime = sampleTrainingMenu.trainingTime
         remainingTrainingTime = sampleTrainingMenu.trainingTime
