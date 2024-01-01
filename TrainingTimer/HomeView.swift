@@ -24,7 +24,7 @@ struct HomeView: View {
                                         .background(Color.whiteColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.13)
                                         .overlay(
-                                            Text("5")
+                                            Text(String(viewState.remainingSets))
                                                 .foregroundStyle(Color.textColor)
                                                 .padding([.top], geometry.size.width * 0.06)
                                                 .font(.notoSans(style: .bold, size:geometry.size.height * 0.08))
@@ -45,7 +45,7 @@ struct HomeView: View {
                                         .background(Color.whiteColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.13)
                                         .overlay(
-                                            Text("20")
+                                            Text(String(viewState.remainingRepetitions))
                                                 .foregroundStyle(Color.textColor)
                                                 .padding([.top], geometry.size.width * 0.06)
                                                 .font(.notoSans(style: .bold, size:geometry.size.height * 0.08))
@@ -66,25 +66,33 @@ struct HomeView: View {
                     ZStack() {
                         Circle()
                             .stroke(viewState.progressColor, lineWidth: 20)
-                        // トレーニング用
+                        // FirstCircle
                         Circle()
-                            .trim(from: 0.0, to: CGFloat(viewState.trainingProgressValue))
+                            .trim(from: 0.0, to: CGFloat(viewState.firstProgressValue))
                             .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .foregroundStyle(Color.progressColor)
-                            .hidden(viewState.trainingProgressIsHidden)
+                            .hidden(viewState.firstProgressIsHidden)
                             .rotationEffect(Angle(degrees: 270.0))
-                            .animation(.easeInOut(duration: 0.3), value: viewState.trainingProgressValue)
-                        Text("\(viewState.remainingTime)")
-                            .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.2))
-                            .foregroundStyle(Color.textColor)
-                        // 休憩用
+                            .animation(.easeInOut(duration: 0.3), value: viewState.firstProgressValue)
+                        // SecondCircle
                         Circle()
-                            .trim(from: 0.0, to: CGFloat(viewState.restProgressValue))
+                            .trim(from: 0.0, to: CGFloat(viewState.secondProgressValue))
                             .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                             .foregroundStyle(Color.progressColor)
-                            .hidden(viewState.restProgressIsHidden)
+                            .hidden(viewState.secondProgressIsHidden)
                             .rotationEffect(Angle(degrees: 270.0))
-                            .animation(.easeInOut(duration: 0.3), value: viewState.restProgressValue)
+                            .animation(.easeInOut(duration: 0.3), value: viewState.secondProgressValue)
+                        VStack {
+                            // Textを中央に配置するためのスペーサー
+                            Text(" ")
+                            Text(String(viewState.remainingTime))
+                                .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.2))
+                                .foregroundStyle(Color.textColor)
+
+                            Text(viewState.currentTitle)
+                                .font(.notoSans(style: .semiBold, size: geometry.size.height * 0.03))
+                                .foregroundStyle(Color.textColor)
+                        }
                     }
                     .frame(width: geometry.size.height * 0.5, height: geometry.size.height * 0.5)
                     .padding(.bottom, geometry.size.height * 0.05)
@@ -96,7 +104,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(.bottom, geometry.size.height * 0.05)
-                .navigationTitle("タイマー")
+                .navigationTitle(viewState.navigationTitle)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing: Button(action: {}) {
                     Image(systemName: "pencil.circle")

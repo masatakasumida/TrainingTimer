@@ -30,6 +30,7 @@ extension Color {
     static let whiteColor = hex(0xFDFCFF)
     static let toolBarColor = hex(0x4499E1)
     static let startButtonColor = hex(0x4499E1)
+    static let prepareProgressBackgroundColor = hex(0xEDE5FF)
     static let trainingProgressBackgroundColor = hex(0x3394E0)
     static let restProgressBackgroundColor = hex(0xB5E0D0)
     static let progressColor = hex(0x808080)
