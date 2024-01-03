@@ -82,22 +82,24 @@ struct HomeView: View {
                             .hidden(viewState.secondProgressIsHidden)
                             .rotationEffect(Angle(degrees: 270.0))
                             .animation(.easeInOut(duration: 0.3), value: viewState.secondProgressValue)
-                        VStack {
-                            // Textを中央に配置するためのスペーサー
-                            Text(" ")
+                        VStack(alignment: .center) {
+                            Spacer()
+                            Text(viewState.currentTitle)
+                                .font(.notoSans(style: .semiBold, size: geometry.size.height * 0.04))
+                                .foregroundStyle(Color.textColor)
+                                .offset(y: geometry.size.height * 0.04)
+
                             Text(String(viewState.remainingTime))
                                 .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.2))
                                 .foregroundStyle(Color.textColor)
-
-                            Text(viewState.currentTitle)
-                                .font(.notoSans(style: .semiBold, size: geometry.size.height * 0.03))
-                                .foregroundStyle(Color.textColor)
+                            Spacer()
+                            Spacer()
                         }
                     }
                     .frame(width: geometry.size.height * 0.5, height: geometry.size.height * 0.5)
                     .padding(.bottom, geometry.size.height * 0.05)
 
-                    if viewState.trainingState == .ready {
+                    if viewState.trainingPhase == .ready {
                         startButton(geometry: geometry)
                     } else {
                         pauseAndStopButtons(geometry: geometry)
@@ -105,10 +107,19 @@ struct HomeView: View {
                 }
                 .padding(.bottom, geometry.size.height * 0.05)
                 .navigationTitle(viewState.navigationTitle)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {}) {
-                    Image(systemName: "pencil.circle")
-                })
+                   .navigationBarTitleDisplayMode(.inline)
+                   .navigationBarItems(trailing: HStack(spacing: 0) {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .foregroundStyle(Color.whiteColor)
+                        .offset(x: 8)
+                       Button(action: {
+                           // ボタンのアクション
+                       }) {
+                           Text("編集")
+                               .font(.notoSans(style: .semiBold, size: 16))
+
+                       }
+                   })
             }
             .background(Color.whiteColor)
             .tint(Color.whiteColor)
@@ -137,10 +148,14 @@ struct HomeView: View {
         HStack() {
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
-                    viewState.changeTrainingState(to: .pause)
+                    if viewState.trainingPhase == .pause {
+                        viewState.changeTrainingState(to: .resume)
+                    } else {
+                        viewState.changeTrainingState(to: .pause)
+                    }
                 }
             }) {
-                Text(viewState.trainingState == .pause ? "再開" : "一時停止")
+                Text(viewState.trainingPhase == .pause ? "再開" : "一時停止")
                     .font(.notoSans(style: .bold, size: geometry.size.width * 0.05))
                     .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.1)
                     .background(Color.startButtonColor)
@@ -148,6 +163,7 @@ struct HomeView: View {
                     .cornerRadius(5)
             }
             .buttonStyle(CustomButtonStyle())
+
 
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {

@@ -8,10 +8,11 @@
 import Foundation
 import SwiftData
 
-enum TrainingState {
+enum TrainingPhase {
     case ready
     case running
     case pause
+    case resume
 }
 
 //@Model

@@ -37,7 +37,7 @@ extension Color {
     static let controlPanelColor = hex(0x3394E0)
     static let controlPanelBackgroundColor = hex(0xEAF4FF)
     static let tabBarUnselectedColor = hex(0xB2D7FD)
-
+    static let restBetweenSetsProgressBackgroundColor = hex(0xE4606D)
 }
 
 extension UIColor {

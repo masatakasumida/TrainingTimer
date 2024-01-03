@@ -13,7 +13,7 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var secondProgressValue: CGFloat = 0.0
 
     @Published private(set) var progressColor: Color = .trainingProgressBackgroundColor
-    @Published private(set) var trainingState: TrainingState = .ready
+    @Published private(set) var trainingPhase: TrainingPhase = .ready
 
     @Published private(set) var remainingTime: Int = 0
 
@@ -27,7 +27,7 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle = " "
 
-    enum TrainingStatus {
+    enum TrainingActivityStage {
         case preparing
         case training
         case resting
@@ -47,21 +47,22 @@ final class HomeViewState: ObservableObject {
         }
     }
 
-    private var currentStatus: TrainingStatus = .preparing
-    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 5, restDuration: 3, repetitions: 3, sets: 3, restBetweenSets: 3, readyTime: 3)
+    private var currentActivityPhase: TrainingActivityStage = .preparing
+    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3)
     private var timer: Timer?
-    private var currentSet: Int = 0
-    private var currentRepetition: Int = 0
+    private var sets: Int = 0
+    private var repetitions: Int = 0
     private var prepareTime: Int = 0
     private var trainingTime: Int = 0
     private var restTime: Int = 0
+    private var restBetweenSets: Int = 0
     private var remainingPrepareTime: Int = 0
     private var remainingTrainingTime: Int = 0
     private var remainingRestTime: Int = 0
     private var cancellables: Set<AnyCancellable> = []
 
     init() {
-        $trainingState
+        $trainingPhase
             .sink { [weak self] state in
                 guard let self = self else { return }
                 self.updateTimer(for: state)
@@ -69,21 +70,25 @@ final class HomeViewState: ObservableObject {
             .store(in: &cancellables)
 
         remainingTime = sampleTrainingMenu.trainingTime
-        currentSet = sampleTrainingMenu.sets
-        currentRepetition = sampleTrainingMenu.repetitions
+
+        sets = sampleTrainingMenu.sets
+        repetitions = sampleTrainingMenu.repetitions
         prepareTime = sampleTrainingMenu.prepareTime
         trainingTime = sampleTrainingMenu.trainingTime
-        remainingPrepareTime = sampleTrainingMenu.prepareTime
-        remainingTrainingTime = sampleTrainingMenu.trainingTime
         restTime = sampleTrainingMenu.restTime
-        remainingRestTime = sampleTrainingMenu.restTime
+        restBetweenSets = sampleTrainingMenu.restBetweenSets
+
         remainingSets = sampleTrainingMenu.sets
         remainingRepetitions = sampleTrainingMenu.repetitions
+        remainingPrepareTime = sampleTrainingMenu.prepareTime
+        remainingTrainingTime = sampleTrainingMenu.trainingTime
+        remainingRestTime = sampleTrainingMenu.restTime
+
         remainingRestBetweenSets = sampleTrainingMenu.restBetweenSets
         navigationTitle = sampleTrainingMenu.name
     }
 
-    private func updateTimer(for state: TrainingState) {
+    private func updateTimer(for state: TrainingPhase) {
         switch state {
         case .running:
             startTimer()
@@ -91,54 +96,57 @@ final class HomeViewState: ObservableObject {
             pauseTimer()
         case .ready:
             stopTimer()
+        case .resume:
+            resumeTimer()
         }
     }
 
-    func changeTrainingState(to newState: TrainingState) {
-        trainingState = newState
+    func changeTrainingState(to newState: TrainingPhase) {
+        trainingPhase = newState
     }
 
     private func startTimer() {
-        currentStatus = .preparing
-        currentTitle = currentStatus.title
+        currentActivityPhase = .preparing
+        currentTitle = currentActivityPhase.title
         remainingTime = remainingPrepareTime
         progressColor = .prepareProgressBackgroundColor
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            self.updateTimerProgress()
-
-        }
+        setupTimer()
     }
 
     private func updateTimerProgress() {
-        switch currentStatus {
+        switch currentActivityPhase {
         case .preparing:
-            // 準備中
             remainingPrepareTime -= 1
             remainingTime = remainingPrepareTime
             if remainingPrepareTime <= 0 {
                 beginTrainingPeriod()
             }
-            updateProgress(remainingPrepareTime, prepareTime, .preparing)
+            updateProgress(remainingPrepareTime, prepareTime)
 
         case .training:
-            // トレーニング中
             remainingTrainingTime -= 1
             remainingTime = remainingTrainingTime
             if remainingTrainingTime <= 0 {
                 beginRestPeriod()
             }
-            updateProgress(remainingTrainingTime, trainingTime, .training)
+            if remainingTrainingTime <= 3 && remainingTrainingTime > 0 {
+                // TODO: 残り3秒の警告音を鳴らす
+            }
+            updateProgress(remainingTrainingTime, trainingTime)
         case .resting:
             remainingRestTime -= 1
             remainingTime = remainingRestTime
             if remainingRestTime <= 0 {
                 beginNextSetOrRepetition()
             }
-            updateProgress(remainingRestTime, sampleTrainingMenu.restTime, .resting)
+            updateProgress(remainingRestTime, restTime)
         case .restBetweenSets:
-            break
+            remainingRestBetweenSets -= 1
+            remainingTime = remainingRestBetweenSets
+            if remainingRestBetweenSets <= 0 {
+                beginTrainingPeriod()
+            }
+            updateProgress(remainingRestBetweenSets, restBetweenSets)
         }
     }
 
@@ -146,87 +154,81 @@ final class HomeViewState: ObservableObject {
         remainingTime = remainingTrainingTime
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let self = self else { return }
-            self.currentStatus = .training
-            self.currentTitle = currentStatus.title
-            self.firstProgressIsHidden = secondProgressIsHidden ? true : false
-            self.secondProgressIsHidden = !firstProgressIsHidden
-            self.progressColor = .trainingProgressBackgroundColor
+            self.currentActivityPhase = .training
             self.remainingRestTime = restTime
-
-            if self.firstProgressValue != 0.0 {
-                self.firstProgressValue = 0.0
-            }
-
-            if self.secondProgressValue != 0.0 {
-                self.secondProgressValue = 0.0
-            }
+            self.progressColor = .trainingProgressBackgroundColor
+            self.resetUIForNewPhase()
         }
     }
 
     private func beginRestPeriod() {
+        if remainingSets == 1 && remainingRepetitions == 1 {
+            remainingTime = trainingTime
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let self = self else { return }
+                trainingPhase = .ready
+            }
+            return
+        }
         remainingTime = remainingRestTime
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let self = self else { return }
-            self.currentStatus = .resting
-            self.currentTitle = currentStatus.title
-            self.firstProgressIsHidden = secondProgressIsHidden ? true : false
-            self.secondProgressIsHidden = !firstProgressIsHidden
-            self.progressColor = .restProgressBackgroundColor
+            self.currentActivityPhase = .resting
             self.remainingTrainingTime = trainingTime
-            if self.firstProgressValue != 0.0 {
-                self.firstProgressValue = 0.0
-            }
-
-            if self.secondProgressValue != 0.0 {
-                self.secondProgressValue = 0.0
-            }
+            self.progressColor = .restProgressBackgroundColor
+            self.resetUIForNewPhase()
         }
     }
 
     private func beginNextSetOrRepetition() {
-        //        if currentRepetition < sampleTrainingMenu.repetitions {
-        //            currentRepetition += 1
-        //        } else if currentSet < sampleTrainingMenu.sets {
-        //            currentSet += 1
-        //            currentRepetition = 1
-        //        } else {
-        //            changeTrainingState(to: .ready)
-        //            return
-        //        }
+        if remainingRepetitions > 1 {
+            self.currentActivityPhase = .training
+        } else if remainingSets > 1 {
+            currentActivityPhase = .restBetweenSets
+        }
         remainingTime = remainingTrainingTime
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self else { return }
-            self.currentStatus = .training
-            self.currentTitle = currentStatus.title
-            self.firstProgressIsHidden = secondProgressIsHidden ? true : false
-            self.secondProgressIsHidden = !firstProgressIsHidden
-            self.progressColor = .trainingProgressBackgroundColor
-            self.remainingRestTime = restTime
-            if self.firstProgressValue != 0.0 {
-                self.firstProgressValue = 0.0
-            }
-            if self.secondProgressValue != 0.0 {
-                self.secondProgressValue = 0.0
-            }
+        if currentActivityPhase == .training {
 
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.remainingRepetitions -= 1
+                self.remainingRestTime = restTime
+                self.progressColor = .trainingProgressBackgroundColor
+                self.resetUIForNewPhase()
+            }
+        } else if currentActivityPhase == .restBetweenSets {
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.remainingSets -= 1
+                self.remainingRepetitions = repetitions
+                self.remainingRestTime = restTime
+                self.progressColor = .restBetweenSetsProgressBackgroundColor
+                self.resetUIForNewPhase()
+            }
         }
     }
 
-    private func updateProgress(_ remainingTime: Int, _ originalTime: Int, _ currentStatus: TrainingStatus) {
-        switch currentStatus {
-        case .preparing:
-            firstProgressValue = 1.0 - CGFloat(remainingTime) / CGFloat(originalTime)
-        case .training:
-            let newProgressValue = 1.0 - CGFloat(remainingTime) / CGFloat(originalTime)
-            firstProgressIsHidden ? (secondProgressValue = newProgressValue) : (firstProgressValue = newProgressValue)
-        case .resting:
-            let newProgressValue = 1.0 - CGFloat(remainingTime) / CGFloat(originalTime)
-            firstProgressIsHidden ? (secondProgressValue = newProgressValue) : (firstProgressValue = newProgressValue)
-        case .restBetweenSets:
-            let newProgressValue = 1.0 - CGFloat(remainingTime) / CGFloat(originalTime)
-            firstProgressIsHidden ? (secondProgressValue = newProgressValue) : (firstProgressValue = newProgressValue)
+    private func resetUIForNewPhase() {
+        currentTitle = currentActivityPhase.title
+        firstProgressIsHidden = secondProgressIsHidden ? true : false
+        secondProgressIsHidden = !firstProgressIsHidden
+        if firstProgressValue != 0.0 {
+            firstProgressValue = 0.0
         }
+        if secondProgressValue != 0.0 {
+            secondProgressValue = 0.0
+        }
+    }
+
+    private func updateProgress(_ remainingTime: Int, _ originalTime: Int) {
+        let newProgressValue = 1.0 - CGFloat(remainingTime) / CGFloat(originalTime)
+        firstProgressIsHidden ? (secondProgressValue = newProgressValue) : (firstProgressValue = newProgressValue)
+    }
+
+    private func resumeTimer() {
+        setupTimer()
     }
 
     private var totalTrainingDuration: Int {
@@ -242,16 +244,28 @@ final class HomeViewState: ObservableObject {
         resetStatus()
     }
 
+    private func setupTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.updateTimerProgress()
+        }
+    }
+
     private func resetStatus() {
         firstProgressValue = 0.0
         secondProgressValue = 0.0
-        firstProgressIsHidden = false
-        secondProgressIsHidden = true
+        firstProgressIsHidden = secondProgressIsHidden ? true : false
+        secondProgressIsHidden = !firstProgressIsHidden
         progressColor = .trainingProgressBackgroundColor
-        remainingPrepareTime = sampleTrainingMenu.prepareTime
-        remainingTime = sampleTrainingMenu.trainingTime
-        remainingTrainingTime = sampleTrainingMenu.trainingTime
-        remainingRestTime = sampleTrainingMenu.restTime
+        remainingPrepareTime = prepareTime
+        remainingTime = trainingTime
+        remainingTrainingTime = trainingTime
+        remainingRestTime = restTime
+        remainingSets = sets
+        remainingRepetitions = repetitions
+        remainingRestBetweenSets = restBetweenSets
+        currentActivityPhase = .preparing
         currentTitle = " "
     }
 }
