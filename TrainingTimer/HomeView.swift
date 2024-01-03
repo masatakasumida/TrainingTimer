@@ -84,7 +84,7 @@ struct HomeView: View {
                             .animation(.easeInOut(duration: 0.3), value: viewState.secondProgressValue)
                         VStack(alignment: .center) {
                             Spacer()
-                            Text(viewState.currentTitle)
+                            viewState.currentTitle
                                 .font(.notoSans(style: .semiBold, size: geometry.size.height * 0.04))
                                 .foregroundStyle(Color.textColor)
                                 .offset(y: geometry.size.height * 0.04)

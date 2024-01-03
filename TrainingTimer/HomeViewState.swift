@@ -25,7 +25,7 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var firstProgressIsHidden = false
     @Published private(set) var secondProgressIsHidden = true
     @Published private(set) var navigationTitle = ""
-    @Published private(set) var currentTitle = " "
+    @Published private(set) var currentTitle: Text = Text(" ")
 
     enum TrainingActivityStage {
         case preparing
@@ -33,16 +33,16 @@ final class HomeViewState: ObservableObject {
         case resting
         case restBetweenSets
 
-        var title: String {
+        var title: Text {
             switch self {
             case .preparing:
-                return "準備"
+                return Text("準備")
             case .training:
-                return "トレーニング"
+                return Text("トレーニング")
             case .resting:
-                return "休憩"
+                return Text("休憩")
             case .restBetweenSets:
-                return "セット間休憩"
+                return Text("セット間休憩")
             }
         }
     }
@@ -266,6 +266,6 @@ final class HomeViewState: ObservableObject {
         remainingRepetitions = repetitions
         remainingRestBetweenSets = restBetweenSets
         currentActivityPhase = .preparing
-        currentTitle = " "
+        currentTitle = Text(" ")
     }
 }
