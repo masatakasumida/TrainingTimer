@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct ContentView: View {
     @State private var selectedTab: Int = 1
@@ -33,21 +34,14 @@ struct ContentView: View {
                     .tag(3)
             }
             .tint(.whiteColor)
-            AdView()
+            
+            BannerView()
                 .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(Color.gray)
-                .offset(CGSize(width: 0, height: -49))
+                .offset(y: -49)
         }
     }
 }
 
-// 広告ビューの定義
-struct AdView: View {
-    var body: some View {
-        Text("広告")
-    }
-}
 
 #Preview {
     ContentView()
