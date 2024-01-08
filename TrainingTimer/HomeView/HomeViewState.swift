@@ -48,7 +48,7 @@ final class HomeViewState: ObservableObject {
     }
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
-    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3)
+    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
     private var timer: Timer?
     private var sets: Int = 0
     private var repetitions: Int = 0

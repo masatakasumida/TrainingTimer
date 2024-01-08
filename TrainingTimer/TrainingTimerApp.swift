@@ -31,12 +31,18 @@ struct TrainingTimerApp: App {
         navigationBarAppearance.backgroundColor = .toolBarColor
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor
-        UITabBar.appearance().backgroundColor = .toolBarColor
-        UITabBar.appearance().unselectedItemTintColor = .tabBarUnselectedColor
-        UITabBarItem.appearance().setTitleTextAttributes([
-            .font: UIFont.notoSans(style: .semiBold, size: 11)
-        ], for: .normal)
+        UINavigationBar.appearance().tintColor = .whiteColor
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = UIColor.toolBarColor
+        tabBarAppearance.stackedLayoutAppearance.normal.iconColor = .tabBarUnselectedColor
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = .whiteColor
+
+        tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabBarUnselectedColor,
+                                                                               NSAttributedString.Key.font: UIFont.notoSans(style: .semiBold, size: 11)]
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor,
+                                                                                 NSAttributedString.Key.font: UIFont.notoSans(style: .semiBold, size: 11)]
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
     }
 
     var body: some Scene {

@@ -21,7 +21,7 @@ struct ContentView: View {
                     }
                     .tag(1)
 
-                EditTimerView()
+                CustomizeTimerView()
                     .tabItem {
                         Label("追加・編集", systemImage: "clock.arrow.circlepath")
                     }
@@ -33,15 +33,15 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
-            .tint(.whiteColor)
-            
+
             BannerView()
                 .frame(height: 50)
                 .offset(y: -49)
         }
+        // キーボードの出現時に自動レイアウトをキャンセルする
+        .ignoresSafeArea(.keyboard, edges: .all)
     }
 }
-
 
 #Preview {
     ContentView()

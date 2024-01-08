@@ -25,11 +25,12 @@ final class TrainingMenu {
     var sets: Int // セット数
     var restBetweenSets: Int // セット間の休憩時間（秒単位）
     var prepareTime: Int // トレーニング開始前の準備時間
-    var creationDate: Date // 作成日
-   //var index: Int // セル管理用のindex
+    var creationAt: Date // 作成日
+    var index: Int // セル管理用のindex
+    var isSelected: Bool // 選択しているトレーニング
 
 
-    init(name: String, trainingTime: Int,restDuration: Int, repetitions: Int, sets: Int, restBetweenSets: Int, readyTime: Int) {
+    init(name: String, trainingTime: Int,restDuration: Int, repetitions: Int, sets: Int, restBetweenSets: Int, readyTime: Int, createdAt: Date, index: Int, isSelected: Bool) {
         self.id = UUID()
         self.name = name
         self.trainingTime = trainingTime
@@ -38,7 +39,9 @@ final class TrainingMenu {
         self.sets = sets
         self.restBetweenSets = restBetweenSets
         self.prepareTime = readyTime
-        self.creationDate = Date()
+        self.creationAt = createdAt
+        self.index = index
+        self.isSelected = isSelected
     }
 }
 

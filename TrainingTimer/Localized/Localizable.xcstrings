@@ -4,6 +4,16 @@
     " " : {
 
     },
+    "%lld秒 × %lld回 × %lldセット" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lldsecond × %2$lld reps × %3$lldsets"
+          }
+        }
+      }
+    },
     "Hello, World!" : {
 
     },
@@ -72,6 +82,9 @@
         }
       }
     },
+    "タイトル" : {
+
+    },
     "トレーニング" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -88,6 +101,15 @@
           }
         }
       }
+    },
+    "トレーニングメニュー" : {
+
+    },
+    "トレーニングを追加" : {
+
+    },
+    "トレーニング名" : {
+
     },
     "ホーム" : {
       "localizations" : {
@@ -138,6 +160,9 @@
         }
       }
     },
+    "保存" : {
+
+    },
     "再開" : {
       "localizations" : {
         "en" : {
@@ -150,6 +175,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "再開"
+          }
+        }
+      }
+    },
+    "削除" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
           }
         }
       }
@@ -169,6 +210,12 @@
           }
         }
       }
+    },
+    "新規作成" : {
+
+    },
+    "決定" : {
+
     },
     "準備" : {
       "extractionState" : "manual",

@@ -19,7 +19,6 @@ struct BannerView: UIViewRepresentable {
             }
         }
         banner.load(GADRequest())
-        banner.backgroundColor = .whiteColor
         return banner
     }
 
