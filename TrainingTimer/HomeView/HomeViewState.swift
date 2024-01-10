@@ -48,7 +48,7 @@ final class HomeViewState: ObservableObject {
     }
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
-    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
+//    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
     private var timer: Timer?
     private var sets: Int = 0
     private var repetitions: Int = 0
@@ -69,23 +69,23 @@ final class HomeViewState: ObservableObject {
             }
             .store(in: &cancellables)
 
-        remainingTime = sampleTrainingMenu.trainingTime
-
-        sets = sampleTrainingMenu.sets
-        repetitions = sampleTrainingMenu.repetitions
-        prepareTime = sampleTrainingMenu.prepareTime
-        trainingTime = sampleTrainingMenu.trainingTime
-        restTime = sampleTrainingMenu.restTime
-        restBetweenSets = sampleTrainingMenu.restBetweenSets
-
-        remainingSets = sampleTrainingMenu.sets
-        remainingRepetitions = sampleTrainingMenu.repetitions
-        remainingPrepareTime = sampleTrainingMenu.prepareTime
-        remainingTrainingTime = sampleTrainingMenu.trainingTime
-        remainingRestTime = sampleTrainingMenu.restTime
-
-        remainingRestBetweenSets = sampleTrainingMenu.restBetweenSets
-        navigationTitle = sampleTrainingMenu.name
+//        remainingTime = sampleTrainingMenu.trainingTime
+//
+//        sets = sampleTrainingMenu.sets
+//        repetitions = sampleTrainingMenu.repetitions
+//        prepareTime = sampleTrainingMenu.prepareTime
+//        trainingTime = sampleTrainingMenu.trainingTime
+//        restTime = sampleTrainingMenu.restTime
+//        restBetweenSets = sampleTrainingMenu.restBetweenSets
+//
+//        remainingSets = sampleTrainingMenu.sets
+//        remainingRepetitions = sampleTrainingMenu.repetitions
+//        remainingPrepareTime = sampleTrainingMenu.prepareTime
+//        remainingTrainingTime = sampleTrainingMenu.trainingTime
+//        remainingRestTime = sampleTrainingMenu.restTime
+//
+//        remainingRestBetweenSets = sampleTrainingMenu.restBetweenSets
+//        navigationTitle = sampleTrainingMenu.name
     }
 
     private func updateTimer(for state: TrainingPhase) {
@@ -229,10 +229,6 @@ final class HomeViewState: ObservableObject {
 
     private func resumeTimer() {
         setupTimer()
-    }
-
-    private var totalTrainingDuration: Int {
-        return (sampleTrainingMenu.trainingTime + sampleTrainingMenu.restTime) * sampleTrainingMenu.repetitions * sampleTrainingMenu.sets
     }
 
     private func pauseTimer() {

@@ -15,9 +15,9 @@ enum TrainingPhase {
     case resume
 }
 
-//@Model
+@Model
 final class TrainingMenu {
-    let id: UUID
+    let id: String
     var name: String
     var trainingTime: Int // トレーニング時間
     var restTime: Int // 休憩時間（秒単位）
@@ -31,7 +31,7 @@ final class TrainingMenu {
 
 
     init(name: String, trainingTime: Int,restDuration: Int, repetitions: Int, sets: Int, restBetweenSets: Int, readyTime: Int, createdAt: Date, index: Int, isSelected: Bool) {
-        self.id = UUID()
+        self.id = UUID().uuidString
         self.name = name
         self.trainingTime = trainingTime
         self.restTime = restDuration

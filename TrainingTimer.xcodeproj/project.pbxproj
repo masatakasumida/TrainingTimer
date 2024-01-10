@@ -13,6 +13,7 @@
 		690A81E02B20A8F70012F215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */; };
 		6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */; };
 		691E29E72B37C09700E6817D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* Models.swift */; };
+		69291BC92B4ECB59009AD66D /* TrainingMenuCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69291BC82B4ECB59009AD66D /* TrainingMenuCreationViewModel.swift */; };
 		693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693529272B414D4E0040FA12 /* ViewExtension.swift */; };
 		6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */; };
 		696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 696D2CC22B455519009D3771 /* Localizable.xcstrings */; };
@@ -38,6 +39,7 @@
 		69F7E32C2B241FBF00494FDF /* NotoSansJP-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69F7E3222B241FBF00494FDF /* NotoSansJP-ExtraLight.ttf */; };
 		69F7E32D2B241FBF00494FDF /* NotoSansJP-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69F7E3232B241FBF00494FDF /* NotoSansJP-Black.ttf */; };
 		69F7E3302B2420F500494FDF /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F7E32F2B2420F500494FDF /* FontExtension.swift */; };
+		69FFA6D42B4D870E0075F8ED /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FFA6D32B4D870E0075F8ED /* DatabaseManager.swift */; };
 		E620FF5FAEED70FCB0B1F78A /* Pods_TrainingTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF22598AB6EE9CCA8D81F7C /* Pods_TrainingTimer.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,7 @@
 		690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		691E29E62B37C09700E6817D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		69291BC82B4ECB59009AD66D /* TrainingMenuCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationViewModel.swift; sourceTree = "<group>"; };
 		693529272B414D4E0040FA12 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCustomCell.swift; sourceTree = "<group>"; };
 		696D2CC22B455519009D3771 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		69F7E3232B241FBF00494FDF /* NotoSansJP-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.ttf"; sourceTree = "<group>"; };
 		69F7E32E2B241FFF00494FDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		69F7E32F2B2420F500494FDF /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		69FFA6D32B4D870E0075F8ED /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C9770BF1124AE870DBE258E1 /* Pods-TrainingTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainingTimer.release.xcconfig"; path = "Target Support Files/Pods-TrainingTimer/Pods-TrainingTimer.release.xcconfig"; sourceTree = "<group>"; };
 		CBF22598AB6EE9CCA8D81F7C /* Pods_TrainingTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainingTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14DE447EC0E8ACBBCDBE425 /* Pods-TrainingTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainingTimer.debug.xcconfig"; path = "Target Support Files/Pods-TrainingTimer/Pods-TrainingTimer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				6940B2392B47D3E200E4659D /* AddOrEditTimer */,
 				699CFDC82B25A65B004F581A /* SettingsView.swift */,
 				691E29E62B37C09700E6817D /* Models.swift */,
+				69FFA6D32B4D870E0075F8ED /* DatabaseManager.swift */,
 				698CE21E2B380FE000CCC680 /* CustomButtons */,
 				699CFDCA2B25A7BC004F581A /* CustomShapes */,
 				69C317382B469BF100B49ECC /* Admob */,
@@ -164,6 +169,7 @@
 				699CFDC62B25A638004F581A /* CustomizeTimerView.swift */,
 				6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */,
 				6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */,
+				69291BC82B4ECB59009AD66D /* TrainingMenuCreationViewModel.swift */,
 			);
 			path = AddOrEditTimer;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */,
 				690A81D92B20A8F60012F215 /* ContentView.swift in Sources */,
 				69F7E3302B2420F500494FDF /* FontExtension.swift in Sources */,
+				69FFA6D42B4D870E0075F8ED /* DatabaseManager.swift in Sources */,
 				6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */,
 				698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */,
 				69C3173C2B469D8F00B49ECC /* BannerViewController.swift in Sources */,
@@ -401,6 +408,7 @@
 				699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */,
 				699CFDC52B25A56D004F581A /* HomeView.swift in Sources */,
 				6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */,
+				69291BC92B4ECB59009AD66D /* TrainingMenuCreationViewModel.swift in Sources */,
 				6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */,
 				691E29E72B37C09700E6817D /* Models.swift in Sources */,
 				699CFDC72B25A638004F581A /* CustomizeTimerView.swift in Sources */,

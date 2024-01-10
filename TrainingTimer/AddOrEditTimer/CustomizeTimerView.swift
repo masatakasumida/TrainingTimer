@@ -9,30 +9,30 @@ import SwiftUI
 
 struct CustomizeTimerView: View {
     @State private var textValue: String = ""
-    let sampleMenu = TrainingMenu(name: "ランニング", trainingTime: 60, restDuration: 30, repetitions: 3, sets: 2, restBetweenSets: 60, readyTime: 10, createdAt: Date(), index: 0, isSelected: true)
+//    let sampleMenu = TrainingMenu(name: "ランニング", trainingTime: 60, restDuration: 30, repetitions: 3, sets: 2, restBetweenSets: 60, readyTime: 10, createdAt: Date(), index: 0, isSelected: true)
     var body: some View {
         NavigationView {
             VStack {
             List {
                 // 最初のカスタムセル
-                AddOrEditCustomCell(trainingMenu: sampleMenu, onEdit: {
-                    // 編集ボタンのタップ時の処理
-                    print("最初のセルの編集ボタンがタップされました")
-                }, onDelete: {
-                    // 削除ボタンのタップ時の処理
-                    print("最初のセルの削除ボタンがタップされました")
-                }, onTap: {
-                    print("最初のセルのがタップされました")
-                })
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.whiteColor)
+//                AddOrEditCustomCell(trainingMenu: sampleMenu, onEdit: {
+//                    // 編集ボタンのタップ時の処理
+//                    print("最初のセルの編集ボタンがタップされました")
+//                }, onDelete: {
+//                    // 削除ボタンのタップ時の処理
+//                    print("最初のセルの削除ボタンがタップされました")
+//                }, onTap: {
+//                    print("最初のセルのがタップされました")
+//                })
+//                .listRowSeparator(.hidden)
+//                .listRowBackground(Color.whiteColor)
             }
-
-            .listStyle(.inset)
-            .scrollContentBackground(.hidden)
-            .background(Color.whiteColor)
-            .navigationTitle("トレーニングメニュー")
-            .navigationBarTitleDisplayMode(.inline)
+//
+//            .listStyle(.inset)
+//            .scrollContentBackground(.hidden)
+//            .background(Color.whiteColor)
+//            .navigationTitle("トレーニングメニュー")
+//            .navigationBarTitleDisplayMode(.inline)
 
                               NavigationLink(destination: TrainingMenuCreationView()) {
                                   Text("トレーニングを追加")
