@@ -26,6 +26,7 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var secondProgressIsHidden = true
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle: Text = Text(" ")
+    @State private var viewModel = TrainingViewModel()
 
     enum TrainingActivityStage {
         case preparing
@@ -48,7 +49,8 @@ final class HomeViewState: ObservableObject {
     }
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
-//    private var sampleTrainingMenu = TrainingMenu(name: "SampleTraining", trainingTime: 3, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
+    // アプリインストール時に一度だけ表示する用のデータ
+    private var initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
     private var timer: Timer?
     private var sets: Int = 0
     private var repetitions: Int = 0
@@ -69,23 +71,25 @@ final class HomeViewState: ObservableObject {
             }
             .store(in: &cancellables)
 
-//        remainingTime = sampleTrainingMenu.trainingTime
-//
-//        sets = sampleTrainingMenu.sets
-//        repetitions = sampleTrainingMenu.repetitions
-//        prepareTime = sampleTrainingMenu.prepareTime
-//        trainingTime = sampleTrainingMenu.trainingTime
-//        restTime = sampleTrainingMenu.restTime
-//        restBetweenSets = sampleTrainingMenu.restBetweenSets
-//
-//        remainingSets = sampleTrainingMenu.sets
-//        remainingRepetitions = sampleTrainingMenu.repetitions
-//        remainingPrepareTime = sampleTrainingMenu.prepareTime
-//        remainingTrainingTime = sampleTrainingMenu.trainingTime
-//        remainingRestTime = sampleTrainingMenu.restTime
-//
-//        remainingRestBetweenSets = sampleTrainingMenu.restBetweenSets
-//        navigationTitle = sampleTrainingMenu.name
+        let trainingMenus = viewModel.trainingMenus
+        if let selectedMenu = trainingMenus.first(where: { $0.isSelected }) {
+              remainingTime = selectedMenu.trainingTime
+              sets = selectedMenu.sets
+              repetitions = selectedMenu.repetitions
+              prepareTime = selectedMenu.prepareTime
+              trainingTime = selectedMenu.trainingTime
+              restTime = selectedMenu.restTime
+              restBetweenSets = selectedMenu.restBetweenSets
+
+              remainingSets = selectedMenu.sets
+              remainingRepetitions = selectedMenu.repetitions
+              remainingPrepareTime = selectedMenu.prepareTime
+              remainingTrainingTime = selectedMenu.trainingTime
+              remainingRestTime = selectedMenu.restTime
+
+              remainingRestBetweenSets = selectedMenu.restBetweenSets
+              navigationTitle = selectedMenu.name
+          }
     }
 
     private func updateTimer(for state: TrainingPhase) {

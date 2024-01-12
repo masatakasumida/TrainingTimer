@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Observable
-class TrainingMenuCreationViewModel {
+class TrainingViewModel {
     @ObservationIgnored
     private let databaseManager: DatabaseManager
 

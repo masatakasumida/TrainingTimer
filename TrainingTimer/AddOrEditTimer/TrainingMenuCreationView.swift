@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TrainingMenuCreationView: View {
 
-    @State var viewModel = TrainingMenuCreationViewModel()
+    @State private var viewModel = TrainingViewModel()
 
     enum PickerSection: String, CaseIterable {
         case prepare
@@ -112,7 +112,7 @@ struct TrainingMenuCreationView: View {
             .navigationTitle("新規作成")
 
             Button(action: {
-                let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: 0, isSelected: false)
+                let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: viewModel.trainingMenus.count, isSelected: false)
                 viewModel.appendTrainingMenu(trainingMenu)
 
             }) {
