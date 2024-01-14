@@ -26,7 +26,8 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var secondProgressIsHidden = true
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle: Text = Text(" ")
-    @State private var viewModel = TrainingViewModel()
+    @AppStorage("firstInstall") var initialInstall = false
+    @State private var model = TrainingModel()
 
     enum TrainingActivityStage {
         case preparing
@@ -49,8 +50,6 @@ final class HomeViewState: ObservableObject {
     }
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
-    // アプリインストール時に一度だけ表示する用のデータ
-    private var initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
     private var timer: Timer?
     private var sets: Int = 0
     private var repetitions: Int = 0
@@ -71,7 +70,14 @@ final class HomeViewState: ObservableObject {
             }
             .store(in: &cancellables)
 
-        let trainingMenus = viewModel.trainingMenus
+        // アプリ初回インストール時、サンプルトレーニングメニューを使用
+        if !initialInstall {
+            var initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
+            model.appendTrainingMenu(initialTrainingMenu)
+            initialInstall = true
+        }
+
+        let trainingMenus = model.trainingMenus
         if let selectedMenu = trainingMenus.first(where: { $0.isSelected }) {
               remainingTime = selectedMenu.trainingTime
               sets = selectedMenu.sets
@@ -89,7 +95,7 @@ final class HomeViewState: ObservableObject {
 
               remainingRestBetweenSets = selectedMenu.restBetweenSets
               navigationTitle = selectedMenu.name
-          }
+        }
     }
 
     private func updateTimer(for state: TrainingPhase) {

@@ -9,21 +9,21 @@ import SwiftUI
 
 struct CustomizeTimerView: View {
     @State private var textValue: String = ""
-    @State private var viewModel = TrainingViewModel()
+    @Binding var trainingMenus: [TrainingMenu]
 
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(viewModel.trainingMenus.indices, id: \.self) { index in
-                        AddOrEditCustomCell(trainingMenu: viewModel.trainingMenus[index], onEdit: {
+                    ForEach(trainingMenus.indices, id: \.self) { index in
+                        AddOrEditCustomCell(trainingMenu: trainingMenus[index], onEdit: {
                             // 編集ボタンのタップ時の処理
-                            print("\(viewModel.trainingMenus[index].name) の編集ボタンがタップされました")
+                            print("\(trainingMenus[index].name) の編集ボタンがタップされました")
                         }, onDelete: {
                             // 削除ボタンのタップ時の処理
-                            print("\(viewModel.trainingMenus[index].name) の削除ボタンがタップされました")
+                            print("\(trainingMenus[index].name) の削除ボタンがタップされました")
                         }, onTap: {
-                            print("\(viewModel.trainingMenus[index].name) のセルがタップされました")
+                            print("\(trainingMenus[index].name) のセルがタップされました")
                         })
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.whiteColor)
@@ -35,7 +35,7 @@ struct CustomizeTimerView: View {
                 .navigationTitle("トレーニングメニュー")
                 .navigationBarTitleDisplayMode(.inline)
 
-                NavigationLink(destination: TrainingMenuCreationView()) {
+                NavigationLink(destination: TrainingMenuCreationView(trainingMenus: $trainingMenus)) {
                     Text("トレーニングを追加")
                         .font(.notoSans(style: .bold, size: 20))
                         .frame(maxWidth: .infinity)
@@ -54,6 +54,6 @@ struct CustomizeTimerView: View {
     }
 }
 
-#Preview {
-    CustomizeTimerView()
-}
+//#Preview {
+//    CustomizeTimerView(trainingMenus: <#Binding<[TrainingMenu]>#>)
+//}

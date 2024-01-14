@@ -10,6 +10,7 @@ import GoogleMobileAds
 
 struct ContentView: View {
     @State private var selectedTab: Int = 1
+    @State var trainingMenus = TrainingModel().trainingMenus
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -21,7 +22,7 @@ struct ContentView: View {
                     }
                     .tag(1)
 
-                CustomizeTimerView()
+                CustomizeTimerView(trainingMenus: $trainingMenus)
                     .tabItem {
                         Label("追加・編集", systemImage: "clock.arrow.circlepath")
                     }

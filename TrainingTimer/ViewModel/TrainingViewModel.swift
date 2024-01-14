@@ -1,5 +1,5 @@
 //
-//  TrainingMenuCreationViewModel.swift
+//  TrainingModel.swift
 //  TrainingTimer
 //
 //  Created by 住田雅隆 on 2024/01/10.
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Observable
-class TrainingViewModel {
+class TrainingModel {
     @ObservationIgnored
     private let databaseManager: DatabaseManager
 
@@ -22,6 +22,7 @@ class TrainingViewModel {
 
     func appendTrainingMenu(_ trainingMenu: TrainingMenu) {
         databaseManager.addTrainingMenu(trainingMenu: trainingMenu)
+        trainingMenus.append(trainingMenu)
     }
 
     func removeItem(_ trainingMenu: TrainingMenu, index: Int) {

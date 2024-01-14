@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TrainingMenuCreationView: View {
 
-    @State private var viewModel = TrainingViewModel()
+    @Environment(\.dismiss) private var dismiss
+    @Binding var trainingMenus: [TrainingMenu]
 
     enum PickerSection: String, CaseIterable {
         case prepare
@@ -44,12 +45,6 @@ struct TrainingMenuCreationView: View {
     @State private var selectedRepetitionsCount = 3
     @State private var selectedSetCount = 5
     @State private var selectedRestBetweenSetCount = 10
-    @State private var isPreparePickerVisible = false
-    @State private var isTrainingPickerVisible = false
-    @State private var isRestPickerVisible = false
-    @State private var isRepetitionsPickerVisible = false
-    @State private var isSetCountPickerVisible = false
-    @State private var isRestBetweenSetPickerVisible = false
 
     let prepareSeconds = Array(1...15)
     let trainingSeconds = Array(1...500)
@@ -74,37 +69,30 @@ struct TrainingMenuCreationView: View {
             List {
                 Section(header: Text("タイトル")) {
                     TextField("トレーニング名", text: $textValue)
+                        .submitLabel(.done)
                 }
-                Section(header: Text("準備")) {
-                    pickerSection(title: PickerSection.prepare,
-                                  value: $selectedPrepareSecond,
-                                  range: prepareSeconds,
-                                  pickerVisible: $isPreparePickerVisible)
-                }
+                pickerSection(title: PickerSection.prepare,
+                              value: $selectedPrepareSecond,
+                              range: prepareSeconds)
 
                 Section(header: Text("トレーニング")) {
                     pickerSection(title: PickerSection.training,
                                   value: $selectedTrainingSecond,
-                                  range: trainingSeconds,
-                                  pickerVisible: $isTrainingPickerVisible)
+                                  range: trainingSeconds)
                     pickerSection(title: PickerSection.rest,
                                   value: $selectedRestSecond,
-                                  range: restSeconds,
-                                  pickerVisible: $isRestPickerVisible)
+                                  range: restSeconds)
                     pickerSection(title: PickerSection.repetitions,
                                   value: $selectedRepetitionsCount,
-                                  range: repetitionsCounts,
-                                  pickerVisible: $isRepetitionsPickerVisible)
+                                  range: repetitionsCounts)
                 }
                 Section(header: Text("セット")) {
                     pickerSection(title: PickerSection.setCount,
                                   value: $selectedSetCount,
-                                  range: setCounts,
-                                  pickerVisible: $isSetCountPickerVisible)
+                                  range: setCounts)
                     pickerSection(title: PickerSection.restBetweenSets,
                                   value: $selectedRestBetweenSetCount,
-                                  range: setCounts,
-                                  pickerVisible: $isRestBetweenSetPickerVisible)
+                                  range: setCounts)
                 }
             }
 
@@ -112,9 +100,9 @@ struct TrainingMenuCreationView: View {
             .navigationTitle("新規作成")
 
             Button(action: {
-                let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: viewModel.trainingMenus.count, isSelected: false)
-                viewModel.appendTrainingMenu(trainingMenu)
-
+                let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: trainingMenus.count, isSelected: false)
+                trainingMenus.append(trainingMenu)
+                dismiss()
             }) {
                 Text("保存")
                     .font(.notoSans(style: .bold, size:20))
@@ -137,48 +125,21 @@ struct TrainingMenuCreationView: View {
     @ViewBuilder
     private func pickerSection(title: PickerSection,
                                value: Binding<Int>,
-                               range: [Int],
-                               pickerVisible: Binding<Bool>) -> some View {
-        HStack {
-            Text(title.displayTitle)
-            Spacer()
-            let displayText = "\(value.wrappedValue) \(unitForPickerSection(title))"
-            Text(displayText)
-                .foregroundColor(.gray)
-        }
-        // Viewのタップ領域を指定
-        .contentShape(Rectangle())
-        .onTapGesture {
-            pickerVisible.wrappedValue.toggle()
-        }
+                               range: [Int]) -> some View {
 
-        if pickerVisible.wrappedValue {
-            Picker(title.displayTitle, selection: value) {
-                ForEach(range, id: \.self) { count in
-                    let displayText = "\(count) \(unitForPickerSection(title))"
-                    Text(displayText).tag(count)
-                }
+        Picker(title.displayTitle, selection: value) {
+            ForEach(range, id: \.self) { count in
+                let displayText = "\(count) \(unitForPickerSection(title))"
+
+                Text(displayText).tag(count)
             }
-            .pickerStyle(.wheel)
-            .frame(height: 120)
-
-            Text("決定")
-                .listRowSeparator(.hidden)
-                .font(.notoSans(style: .bold, size: 16))
-                .padding(10)
-                .frame(maxWidth: .infinity)
-                .background(Color.controlPanelColor)
-                .foregroundColor(.whiteColor)
-                .cornerRadius(7)
-                .onTapGesture {
-                    pickerVisible.wrappedValue = false
-                }
-                .padding(.leading, 16)
-                .padding(.trailing, 16)
         }
+        .pickerStyle(.menu)
+        .tint(.textColor)
     }
 }
 
-#Preview {
-    TrainingMenuCreationView()
-}
+//#Preview {
+//    @Binding var trainingMenus: [TrainingMenu]
+//    TrainingMenuCreationView(trainingMenus: trainingMenus)
+//}
