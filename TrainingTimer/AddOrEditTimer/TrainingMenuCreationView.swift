@@ -11,97 +11,51 @@ struct TrainingMenuCreationView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Binding var trainingMenus: [TrainingMenu]
+    @StateObject private var viewModel: TrainingMenuCreationViewModel
 
-    enum PickerSection: String, CaseIterable {
-        case prepare
-        case training
-        case rest
-        case repetitions
-        case setCount
-        case restBetweenSets
-
-        var displayTitle: String {
-            switch self {
-            case .prepare:
-                return "準備時間"
-            case .training:
-                return "トレーニング時間"
-            case .rest:
-                return "休憩時間"
-            case .repetitions:
-                return "トレーニング回数"
-            case .setCount:
-                return "セット数"
-            case .restBetweenSets:
-                return "セット間の休憩時間"
-            }
-        }
-    }
-
-    @State private var textValue: String = ""
-    @State private var selectedPrepareSecond = 5
-    @State private var selectedTrainingSecond = 10
-    @State private var selectedRestSecond = 5
-    @State private var selectedRepetitionsCount = 3
-    @State private var selectedSetCount = 5
-    @State private var selectedRestBetweenSetCount = 10
-
-    let prepareSeconds = Array(1...15)
-    let trainingSeconds = Array(1...500)
-    let restSeconds = Array(0...500)
-    let repetitionsCounts = Array(1...30)
-    let setCounts = Array(1...30)
-    let restBetweenSetsSeconds = Array(1...500)
-
-    private func unitForPickerSection(_ section: PickerSection) -> String {
-        switch section {
-        case .prepare, .training, .rest, .restBetweenSets:
-            return "秒"
-        case .setCount:
-            return "セット"
-        case .repetitions:
-            return "回"
-        }
+    init(trainingMenus: Binding<[TrainingMenu]>) {
+        self._trainingMenus = trainingMenus
+        self._viewModel = StateObject(wrappedValue: TrainingMenuCreationViewModel(trainingMenus: trainingMenus))
     }
 
     var body: some View {
         VStack {
             List {
                 Section(header: Text("タイトル")) {
-                    TextField("トレーニング名", text: $textValue)
+                    TextField("トレーニング名", text: $viewModel.textValue)
                         .submitLabel(.done)
                 }
-                pickerSection(title: PickerSection.prepare,
-                              value: $selectedPrepareSecond,
-                              range: prepareSeconds)
+                Section(header: Text("準備時間")) {
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.prepare,
+                                  value: $viewModel.selectedPrepareSecond,
+                                  range: viewModel.prepareSeconds)
+                }
 
                 Section(header: Text("トレーニング")) {
-                    pickerSection(title: PickerSection.training,
-                                  value: $selectedTrainingSecond,
-                                  range: trainingSeconds)
-                    pickerSection(title: PickerSection.rest,
-                                  value: $selectedRestSecond,
-                                  range: restSeconds)
-                    pickerSection(title: PickerSection.repetitions,
-                                  value: $selectedRepetitionsCount,
-                                  range: repetitionsCounts)
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.training,
+                                  value: $viewModel.selectedTrainingSecond,
+                                  range: viewModel.trainingSeconds)
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.rest,
+                                  value: $viewModel.selectedRestSecond,
+                                  range: viewModel.restSeconds)
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.repetitions,
+                                  value: $viewModel.selectedRepetitionsCount,
+                                  range: viewModel.repetitionsCounts)
                 }
                 Section(header: Text("セット")) {
-                    pickerSection(title: PickerSection.setCount,
-                                  value: $selectedSetCount,
-                                  range: setCounts)
-                    pickerSection(title: PickerSection.restBetweenSets,
-                                  value: $selectedRestBetweenSetCount,
-                                  range: setCounts)
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.setCount,
+                                  value: $viewModel.selectedSetCount,
+                                  range: viewModel.setCounts)
+                    pickerSection(title: TrainingMenuCreationViewModel.PickerSection.restBetweenSets,
+                                  value: $viewModel.selectedRestBetweenSetCount,
+                                  range: viewModel.restBetweenSetsSeconds)
                 }
             }
-
             .listStyle(.insetGrouped)
             .navigationTitle("新規作成")
 
             Button(action: {
-                let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: trainingMenus.count, isSelected: false)
-                trainingMenus.append(trainingMenu)
+                viewModel.saveTrainingMenu()
                 dismiss()
             }) {
                 Text("保存")
@@ -123,18 +77,19 @@ struct TrainingMenuCreationView: View {
     }
 
     @ViewBuilder
-    private func pickerSection(title: PickerSection,
+    private func pickerSection(title: TrainingMenuCreationViewModel.PickerSection,
                                value: Binding<Int>,
                                range: [Int]) -> some View {
 
         Picker(title.displayTitle, selection: value) {
             ForEach(range, id: \.self) { count in
-                let displayText = "\(count) \(unitForPickerSection(title))"
+                let displayText = "\(count) \(viewModel.unitForPickerSection(title))"
 
                 Text(displayText).tag(count)
             }
         }
-        .pickerStyle(.menu)
+        // 本当はmenuにしたいが、rangeの設定が大きくなると、画面遷移時にかなりもたつく
+        .pickerStyle(.navigationLink)
         .tint(.textColor)
     }
 }

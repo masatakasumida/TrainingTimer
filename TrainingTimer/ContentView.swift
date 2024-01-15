@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                HomeView()
+                HomeView(trainingMenus: $trainingMenus)
                     .tabItem {
                         Label("ホーム", systemImage: "house")
                             .font(.notoSans(style: .semiBold, size: 19))

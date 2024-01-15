@@ -1,5 +1,5 @@
 //
-//  HomeViewState.swift
+//  HomeViewModel.swift
 //  TrainingTimer
 //
 //  Created by 住田雅隆 on 2023/12/24.
@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-final class HomeViewState: ObservableObject {
+class HomeViewModel: ObservableObject {
     @Published private(set) var firstProgressValue: CGFloat = 0.0
     @Published private(set) var secondProgressValue: CGFloat = 0.0
 
@@ -28,6 +28,7 @@ final class HomeViewState: ObservableObject {
     @Published private(set) var currentTitle: Text = Text(" ")
     @AppStorage("firstInstall") var initialInstall = false
     @State private var model = TrainingModel()
+    @Binding var trainingMenus: [TrainingMenu]
 
     enum TrainingActivityStage {
         case preparing
@@ -62,7 +63,8 @@ final class HomeViewState: ObservableObject {
     private var remainingRestTime: Int = 0
     private var cancellables: Set<AnyCancellable> = []
 
-    init() {
+    init(trainingMenus: Binding<[TrainingMenu]>) {
+        self._trainingMenus = trainingMenus
         $trainingPhase
             .sink { [weak self] state in
                 guard let self = self else { return }
@@ -72,29 +74,46 @@ final class HomeViewState: ObservableObject {
 
         // アプリ初回インストール時、サンプルトレーニングメニューを使用
         if !initialInstall {
-            var initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
+            let initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 110, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
             model.appendTrainingMenu(initialTrainingMenu)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                trainingMenus.wrappedValue.append(initialTrainingMenu)
+                self.remainingTime = initialTrainingMenu.trainingTime
+                self.sets = initialTrainingMenu.sets
+                self.repetitions = initialTrainingMenu.repetitions
+                self.prepareTime = initialTrainingMenu.prepareTime
+                self.trainingTime = initialTrainingMenu.trainingTime
+                self.restTime = initialTrainingMenu.restTime
+                self.restBetweenSets = initialTrainingMenu.restBetweenSets
+                self.remainingSets = initialTrainingMenu.sets
+                self.remainingRepetitions = initialTrainingMenu.repetitions
+                self.remainingPrepareTime = initialTrainingMenu.prepareTime
+                self.remainingTrainingTime = initialTrainingMenu.trainingTime
+                self.remainingRestTime = initialTrainingMenu.restTime
+                self.remainingRestBetweenSets = initialTrainingMenu.restBetweenSets
+                self.navigationTitle = initialTrainingMenu.name
+            }
             initialInstall = true
-        }
+        } else {
+            if let selectedMenu = trainingMenus.wrappedValue.first(where: { $0.isSelected }) {
+                remainingTime = selectedMenu.trainingTime
+                sets = selectedMenu.sets
+                repetitions = selectedMenu.repetitions
+                prepareTime = selectedMenu.prepareTime
+                trainingTime = selectedMenu.trainingTime
+                restTime = selectedMenu.restTime
+                restBetweenSets = selectedMenu.restBetweenSets
 
-        let trainingMenus = model.trainingMenus
-        if let selectedMenu = trainingMenus.first(where: { $0.isSelected }) {
-              remainingTime = selectedMenu.trainingTime
-              sets = selectedMenu.sets
-              repetitions = selectedMenu.repetitions
-              prepareTime = selectedMenu.prepareTime
-              trainingTime = selectedMenu.trainingTime
-              restTime = selectedMenu.restTime
-              restBetweenSets = selectedMenu.restBetweenSets
+                remainingSets = selectedMenu.sets
+                remainingRepetitions = selectedMenu.repetitions
+                remainingPrepareTime = selectedMenu.prepareTime
+                remainingTrainingTime = selectedMenu.trainingTime
+                remainingRestTime = selectedMenu.restTime
 
-              remainingSets = selectedMenu.sets
-              remainingRepetitions = selectedMenu.repetitions
-              remainingPrepareTime = selectedMenu.prepareTime
-              remainingTrainingTime = selectedMenu.trainingTime
-              remainingRestTime = selectedMenu.restTime
-
-              remainingRestBetweenSets = selectedMenu.restBetweenSets
-              navigationTitle = selectedMenu.name
+                remainingRestBetweenSets = selectedMenu.restBetweenSets
+                navigationTitle = selectedMenu.name
+            }
         }
     }
 

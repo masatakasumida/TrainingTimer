@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct CustomizeTimerView: View {
-    @State private var textValue: String = ""
+
     @Binding var trainingMenus: [TrainingMenu]
+    @StateObject private var viewModel: CustomizeTimerViewModel
+
+    init(trainingMenus: Binding<[TrainingMenu]>) {
+        self._trainingMenus = trainingMenus
+        self._viewModel = StateObject(wrappedValue: CustomizeTimerViewModel(trainingMenus: trainingMenus))
+    }
 
     var body: some View {
         NavigationView {

@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6900CB5C2B54162A0031AEBA /* CustomizeTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900CB5B2B54162A0031AEBA /* CustomizeTimerViewModel.swift */; };
+		6900CB5F2B54177F0031AEBA /* TrainingMenuCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900CB5E2B54177F0031AEBA /* TrainingMenuCreationViewModel.swift */; };
 		690A81D72B20A8F60012F215 /* TrainingTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A81D62B20A8F60012F215 /* TrainingTimerApp.swift */; };
 		690A81D92B20A8F60012F215 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A81D82B20A8F60012F215 /* ContentView.swift */; };
 		690A81DD2B20A8F70012F215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DC2B20A8F70012F215 /* Assets.xcassets */; };
 		690A81E02B20A8F70012F215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */; };
 		6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */; };
-		691E29E72B37C09700E6817D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* Models.swift */; };
-		69291BC92B4ECB59009AD66D /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69291BC82B4ECB59009AD66D /* TrainingViewModel.swift */; };
+		691E29E72B37C09700E6817D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E29E62B37C09700E6817D /* Model.swift */; };
+		69291BC92B4ECB59009AD66D /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69291BC82B4ECB59009AD66D /* TrainingModel.swift */; };
 		693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693529272B414D4E0040FA12 /* ViewExtension.swift */; };
 		6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */; };
 		696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 696D2CC22B455519009D3771 /* Localizable.xcstrings */; };
 		6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
-		698CE2202B382AD900CCC680 /* HomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21F2B382AD900CCC680 /* HomeViewState.swift */; };
+		698CE2202B382AD900CCC680 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21F2B382AD900CCC680 /* HomeViewModel.swift */; };
 		699CFDC52B25A56D004F581A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC42B25A56D004F581A /* HomeView.swift */; };
 		699CFDC72B25A638004F581A /* CustomizeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC62B25A638004F581A /* CustomizeTimerView.swift */; };
 		699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC82B25A65B004F581A /* SettingsView.swift */; };
@@ -44,20 +46,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6900CB5B2B54162A0031AEBA /* CustomizeTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTimerViewModel.swift; sourceTree = "<group>"; };
+		6900CB5E2B54177F0031AEBA /* TrainingMenuCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationViewModel.swift; sourceTree = "<group>"; };
 		690A81D32B20A8F60012F215 /* TrainingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		690A81D62B20A8F60012F215 /* TrainingTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTimerApp.swift; sourceTree = "<group>"; };
 		690A81D82B20A8F60012F215 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		690A81DC2B20A8F70012F215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		690A81DF2B20A8F70012F215 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6913BBCD2B35C23B00B76D0F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		691E29E62B37C09700E6817D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		69291BC82B4ECB59009AD66D /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		691E29E62B37C09700E6817D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		69291BC82B4ECB59009AD66D /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
 		693529272B414D4E0040FA12 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCustomCell.swift; sourceTree = "<group>"; };
 		696D2CC22B455519009D3771 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationView.swift; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		698CE21F2B382AD900CCC680 /* HomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewState.swift; sourceTree = "<group>"; };
+		698CE21F2B382AD900CCC680 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		699CFDC42B25A56D004F581A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		699CFDC62B25A638004F581A /* CustomizeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTimerView.swift; sourceTree = "<group>"; };
 		699CFDC82B25A65B004F581A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6900CB5D2B5416F50031AEBA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				698CE21F2B382AD900CCC680 /* HomeViewModel.swift */,
+				6900CB5B2B54162A0031AEBA /* CustomizeTimerViewModel.swift */,
+				6900CB5E2B54177F0031AEBA /* TrainingMenuCreationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		690A81CA2B20A8F60012F215 = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +146,8 @@
 				6968589A2B46E79500AF2730 /* HomeView */,
 				6940B2392B47D3E200E4659D /* AddOrEditTimer */,
 				699CFDC82B25A65B004F581A /* SettingsView.swift */,
-				69A26B732B5170FB00956BB7 /* ViewModel */,
+				6900CB5D2B5416F50031AEBA /* ViewModels */,
+				69A26B732B5170FB00956BB7 /* Model */,
 				69FFA6D32B4D870E0075F8ED /* DatabaseManager.swift */,
 				698CE21E2B380FE000CCC680 /* CustomButtons */,
 				699CFDCA2B25A7BC004F581A /* CustomShapes */,
@@ -177,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				699CFDC42B25A56D004F581A /* HomeView.swift */,
-				698CE21F2B382AD900CCC680 /* HomeViewState.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -198,13 +212,13 @@
 			path = CustomShapes;
 			sourceTree = "<group>";
 		};
-		69A26B732B5170FB00956BB7 /* ViewModel */ = {
+		69A26B732B5170FB00956BB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				69291BC82B4ECB59009AD66D /* TrainingViewModel.swift */,
-				691E29E62B37C09700E6817D /* Models.swift */,
+				69291BC82B4ECB59009AD66D /* TrainingModel.swift */,
+				691E29E62B37C09700E6817D /* Model.swift */,
 			);
-			path = ViewModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		69C317382B469BF100B49ECC /* Admob */ = {
@@ -404,10 +418,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				698CE2202B382AD900CCC680 /* HomeViewState.swift in Sources */,
+				698CE2202B382AD900CCC680 /* HomeViewModel.swift in Sources */,
 				699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */,
 				690A81D92B20A8F60012F215 /* ContentView.swift in Sources */,
 				69F7E3302B2420F500494FDF /* FontExtension.swift in Sources */,
+				6900CB5F2B54177F0031AEBA /* TrainingMenuCreationViewModel.swift in Sources */,
 				69FFA6D42B4D870E0075F8ED /* DatabaseManager.swift in Sources */,
 				6913BBCE2B35C23B00B76D0F /* ColorExtension.swift in Sources */,
 				698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */,
@@ -416,10 +431,11 @@
 				699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */,
 				699CFDC52B25A56D004F581A /* HomeView.swift in Sources */,
 				6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */,
-				69291BC92B4ECB59009AD66D /* TrainingViewModel.swift in Sources */,
+				69291BC92B4ECB59009AD66D /* TrainingModel.swift in Sources */,
 				6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */,
-				691E29E72B37C09700E6817D /* Models.swift in Sources */,
+				691E29E72B37C09700E6817D /* Model.swift in Sources */,
 				699CFDC72B25A638004F581A /* CustomizeTimerView.swift in Sources */,
+				6900CB5C2B54162A0031AEBA /* CustomizeTimerViewModel.swift in Sources */,
 				69C3173A2B469C1000B49ECC /* AdmobConfig.swift in Sources */,
 				690A81D72B20A8F60012F215 /* TrainingTimerApp.swift in Sources */,
 			);
