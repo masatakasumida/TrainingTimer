@@ -34,7 +34,7 @@ struct AddOrEditCustomCell: View {
                             .stroke(.red, lineWidth: 2)
                     )
                     .onTapGesture {
-                        onEdit()
+                        onDelete()
                     }
                 Text("編集")
                     .foregroundColor(.blue)
@@ -47,7 +47,7 @@ struct AddOrEditCustomCell: View {
                             .stroke(.blue, lineWidth: 2)
                     )
                     .onTapGesture {
-                        onDelete()
+                        onEdit()
                     }
             }
         }

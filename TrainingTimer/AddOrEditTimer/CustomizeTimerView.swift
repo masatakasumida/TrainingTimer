@@ -28,6 +28,7 @@ struct CustomizeTimerView: View {
                         }, onDelete: {
                             // 削除ボタンのタップ時の処理
                             print("\(trainingMenus[index].name) の削除ボタンがタップされました")
+                            viewModel.deleteTrainingMenu(at: index)
                         }, onTap: {
                             print("\(trainingMenus[index].name) のセルがタップされました")
                         })
@@ -40,6 +41,18 @@ struct CustomizeTimerView: View {
                 .background(Color.whiteColor)
                 .navigationTitle("トレーニングメニュー")
                 .navigationBarTitleDisplayMode(.inline)
+                .alert("削除の確認", isPresented: $viewModel.isDeleteShowAlert) {
+                    Button("削除", role: .destructive) {
+                        viewModel.confirmDelete()
+                    }
+                } message: {
+                    Text(viewModel.deleteIndex.map { index in
+                        guard trainingMenus.indices.contains(index) else {
+                            return "削除するアイテムが見つかりませんでした。"
+                        }
+                        return "\(trainingMenus[index].name) を削除してもよろしいですか？"
+                    } ?? "削除するアイテムが選択されていません。")
+                }
 
                 NavigationLink(destination: TrainingMenuCreationView(trainingMenus: $trainingMenus)) {
                     Text("トレーニングを追加")

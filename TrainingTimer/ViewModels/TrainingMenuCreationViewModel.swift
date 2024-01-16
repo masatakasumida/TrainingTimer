@@ -45,7 +45,7 @@ class TrainingMenuCreationViewModel: ObservableObject {
     @Published var selectedRepetitionsCount = 3
     @Published var selectedSetCount = 5
     @Published var selectedRestBetweenSetCount = 10
-    // レンジが大きいとView描画時に少しもたつく。今のところ対策なし
+ 
     let prepareSeconds = Array(1...15)
     let trainingSeconds = Array(1...500)
     let restSeconds = Array(0...500)

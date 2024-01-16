@@ -21,17 +21,17 @@ struct TrainingMenuCreationView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("タイトル")) {
+                Section(header: Text("タイトル").font(.notoSans(style: .semiBold, size: 12))) {
                     TextField("トレーニング名", text: $viewModel.textValue)
-                        .submitLabel(.done)
+                        .font(.notoSans(style: .regular, size: 16))
                 }
-                Section(header: Text("準備時間")) {
+                Section(header: Text("準備時間").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.prepare,
                                   value: $viewModel.selectedPrepareSecond,
                                   range: viewModel.prepareSeconds)
                 }
 
-                Section(header: Text("トレーニング")) {
+                Section(header: Text("トレーニング").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.training,
                                   value: $viewModel.selectedTrainingSecond,
                                   range: viewModel.trainingSeconds)
@@ -42,7 +42,7 @@ struct TrainingMenuCreationView: View {
                                   value: $viewModel.selectedRepetitionsCount,
                                   range: viewModel.repetitionsCounts)
                 }
-                Section(header: Text("セット")) {
+                Section(header: Text("セット").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.setCount,
                                   value: $viewModel.selectedSetCount,
                                   range: viewModel.setCounts)
@@ -84,12 +84,13 @@ struct TrainingMenuCreationView: View {
         Picker(title.displayTitle, selection: value) {
             ForEach(range, id: \.self) { count in
                 let displayText = "\(count) \(viewModel.unitForPickerSection(title))"
-
                 Text(displayText).tag(count)
+                    .font(.notoSans(style: .regular, size: 16))
             }
         }
         // 本当はmenuにしたいが、rangeの設定が大きくなると、画面遷移時にかなりもたつく
         .pickerStyle(.navigationLink)
+        .font(.notoSans(style: .regular, size: 16))
         .tint(.textColor)
     }
 }

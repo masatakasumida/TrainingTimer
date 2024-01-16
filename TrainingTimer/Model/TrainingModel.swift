@@ -24,7 +24,7 @@ class TrainingModel {
         databaseManager.addTrainingMenu(trainingMenu: trainingMenu)
     }
 
-    func removeItem(_ trainingMenu: TrainingMenu, index: Int) {
-        databaseManager.removeTrainingMenu(trainingMenu)
+    func removeItem(index: Int) {
+        databaseManager.removeTrainingMenu(trainingMenus[index])
     }
 }
