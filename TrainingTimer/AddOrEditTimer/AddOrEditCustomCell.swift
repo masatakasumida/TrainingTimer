@@ -52,8 +52,12 @@ struct AddOrEditCustomCell: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(Color.whiteColor)
         .cornerRadius(4)
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(trainingMenu.isSelected ? Color.controlPanelColor : Color.clear, lineWidth: 2)
+        )
         .shadow(radius: 2)
         .onTapGesture {
             onTap()

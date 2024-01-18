@@ -39,4 +39,14 @@ class DatabaseManager {
     func removeTrainingMenu(_ trainingMenu: TrainingMenu) {
         modelContext.delete(trainingMenu)
     }
+
+    func updateTrainingMenu(_ trainingMenu: TrainingMenu) {
+        do {
+            if modelContext.hasChanges {
+                try modelContext.save()
+            }
+        } catch {
+            fatalError("更新に失敗: \(error.localizedDescription)")
+        }
+    }
 }

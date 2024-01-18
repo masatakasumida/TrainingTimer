@@ -14,10 +14,10 @@ class TrainingModel {
     private let databaseManager: DatabaseManager
 
     var trainingMenus: [TrainingMenu] = []
-
+    
     init(databaseManager: DatabaseManager = DatabaseManager.shared) {
         self.databaseManager = databaseManager
-        trainingMenus = databaseManager.fetchTrainingMenu()
+        trainingMenus = databaseManager.fetchTrainingMenu().sorted(by: { $0.index < $1.index })
     }
 
     func appendTrainingMenu(_ trainingMenu: TrainingMenu) {
@@ -26,5 +26,9 @@ class TrainingModel {
 
     func removeItem(index: Int) {
         databaseManager.removeTrainingMenu(trainingMenus[index])
+    }
+
+    func updateTrainingMenu(_ trainingMenu: TrainingMenu) {
+        databaseManager.updateTrainingMenu(trainingMenu)
     }
 }
