@@ -15,21 +15,22 @@ struct CustomizeTimerView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(viewModel.model.trainingMenus.indices, id: \.self) { index in
-                        AddOrEditCustomCell(trainingMenu: viewModel.model.trainingMenus[index], onEdit: {
+                    ForEach(viewModel.model.trainingMenus, id: \.id) { trainingMenu in
+                        AddOrEditCustomCell(trainingMenu: trainingMenu, onEdit: {
                             // 編集ボタンのタップ時の処理
-                            print("\(viewModel.model.trainingMenus[index].name) の編集ボタンがタップされました")
+                            print("\(trainingMenu.name) の編集ボタンがタップされました")
                         }, onDelete: {
                             // 削除ボタンのタップ時の処理
-                            print("\(viewModel.model.trainingMenus[index].name) の削除ボタンがタップされました")
-                            viewModel.deleteTrainingMenu(at: index)
+                            print("\(trainingMenu.name) の削除ボタンがタップされました")
+                            viewModel.deleteTrainingMenu(at: trainingMenu.index)
                         }, onTap: {
-                            print("\(viewModel.model.trainingMenus[index].name) のセルがタップされました")
-                            viewModel.setTrainingMenu(at: index)
+                            print("\(trainingMenu.name) のセルがタップされました")
+                            viewModel.setTrainingMenu(at: trainingMenu.index)
                         })
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.whiteColor)
                     }
+                    .onMove(perform: move)
                 }
                 .listStyle(.inset)
                 .scrollContentBackground(.hidden)
@@ -78,6 +79,9 @@ struct CustomizeTimerView: View {
             }
         }
         .tint(.whiteColor)
+    }
+    private func move(from source: IndexSet, to destination: Int) {
+        viewModel.moveTrainingMenu(from: source, to: destination)
     }
 }
 

@@ -29,8 +29,14 @@ class TrainingModel {
 
     func removeItem(index: Int) {
         databaseManager.removeTrainingMenu(trainingMenus[index])
-        onTrainingMenusChanged?()
+
         trainingMenus.remove(at: index)
+        // 削除したアイテムのindexより大きい全てのアイテムのindexを更新
+        for i in index..<trainingMenus.count {
+            trainingMenus[i].index -= 1
+            databaseManager.updateTrainingMenu(trainingMenus[i])
+        }
+        onTrainingMenusChanged?()
     }
 
     func updateTrainingMenu(_ trainingMenu: TrainingMenu) {

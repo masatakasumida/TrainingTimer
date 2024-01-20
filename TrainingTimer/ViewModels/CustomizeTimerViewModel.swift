@@ -15,15 +15,15 @@ class CustomizeTimerViewModel: ObservableObject {
     var selectedIndex: Int?
 
     func deleteTrainingMenu(at index: Int) {
-           selectedIndex = index
-           isDeleteShowAlert = true
-       }
+        selectedIndex = index
+        isDeleteShowAlert = true
+    }
     func confirmDelete() {
-          guard let index = selectedIndex,
-                let deleteMenuIndex = model.trainingMenus.firstIndex(where: { $0.index == index }) else {
-              isDeleteShowAlert = false
-              return
-          }
+        guard let index = selectedIndex,
+              let deleteMenuIndex = model.trainingMenus.firstIndex(where: { $0.index == index }) else {
+            isDeleteShowAlert = false
+            return
+        }
         model.removeItem(index: deleteMenuIndex)
         isDeleteShowAlert = false
     }
@@ -43,9 +43,21 @@ class CustomizeTimerViewModel: ObservableObject {
         if let currentlySelectedIndex = model.trainingMenus.firstIndex(where: { $0.isSelected }) {
             model.trainingMenus[currentlySelectedIndex].isSelected = false
             model.updateTrainingMenu(model.trainingMenus[currentlySelectedIndex])
-          }
+        }
         model.trainingMenus[setMenuIndex].isSelected = true
         model.updateTrainingMenu(model.trainingMenus[setMenuIndex])
         isSetShowAlert = false
+    }
+
+    func moveTrainingMenu(from source: IndexSet, to destination: Int) {
+        model.trainingMenus.move(fromOffsets: source, toOffset: destination)
+        updateIndexes()
+    }
+
+    private func updateIndexes() {
+        for (index, _) in model.trainingMenus.enumerated() {
+            model.trainingMenus[index].index = index
+            model.updateTrainingMenu(model.trainingMenus[index])
+        }
     }
 }
