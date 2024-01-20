@@ -8,27 +8,22 @@
 import SwiftUI
 
 class CustomizeTimerViewModel: ObservableObject {
-    @Binding var trainingMenus: [TrainingMenu]
-    @State private var model = TrainingModel()
+    var model = TrainingModel.shared
     @Published var isDeleteShowAlert = false
     @Published var isSetShowAlert = false
 
     var selectedIndex: Int?
 
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
-    }
     func deleteTrainingMenu(at index: Int) {
            selectedIndex = index
            isDeleteShowAlert = true
        }
     func confirmDelete() {
           guard let index = selectedIndex,
-                let deleteMenuIndex = trainingMenus.firstIndex(where: { $0.index == index }) else {
+                let deleteMenuIndex = model.trainingMenus.firstIndex(where: { $0.index == index }) else {
               isDeleteShowAlert = false
               return
           }
-        trainingMenus.remove(at: deleteMenuIndex)
         model.removeItem(index: deleteMenuIndex)
         isDeleteShowAlert = false
     }
@@ -40,17 +35,17 @@ class CustomizeTimerViewModel: ObservableObject {
 
     func confirmSet() {
         guard let index = selectedIndex,
-              let setMenuIndex = trainingMenus.firstIndex(where: { $0.index == index }) else {
+              let setMenuIndex = model.trainingMenus.firstIndex(where: { $0.index == index }) else {
             isSetShowAlert = false
             return
         }
         // 現在選択されているメニューを探し、isSelectedをfalseに設定
-          if let currentlySelectedIndex = trainingMenus.firstIndex(where: { $0.isSelected }) {
-              trainingMenus[currentlySelectedIndex].isSelected = false
-              model.updateTrainingMenu(trainingMenus[currentlySelectedIndex])
+        if let currentlySelectedIndex = model.trainingMenus.firstIndex(where: { $0.isSelected }) {
+            model.trainingMenus[currentlySelectedIndex].isSelected = false
+            model.updateTrainingMenu(model.trainingMenus[currentlySelectedIndex])
           }
-        trainingMenus[setMenuIndex].isSelected = true
-        model.updateTrainingMenu(trainingMenus[setMenuIndex])
+        model.trainingMenus[setMenuIndex].isSelected = true
+        model.updateTrainingMenu(model.trainingMenus[setMenuIndex])
         isSetShowAlert = false
     }
 }

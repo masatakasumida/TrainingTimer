@@ -27,28 +27,7 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle: Text = Text(" ")
     @AppStorage("firstInstall") var initialInstall = false
-    @State private var model = TrainingModel()
-    @Binding var trainingMenus: [TrainingMenu]
-
-    enum TrainingActivityStage {
-        case preparing
-        case training
-        case resting
-        case restBetweenSets
-
-        var title: Text {
-            switch self {
-            case .preparing:
-                return Text("準備")
-            case .training:
-                return Text("トレーニング")
-            case .resting:
-                return Text("休憩")
-            case .restBetweenSets:
-                return Text("セット間休憩")
-            }
-        }
-    }
+    var model = TrainingModel.shared
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
     private var timer: Timer?
@@ -63,8 +42,7 @@ class HomeViewModel: ObservableObject {
     private var remainingRestTime: Int = 0
     private var cancellables: Set<AnyCancellable> = []
 
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
+    init() {
         $trainingPhase
             .sink { [weak self] state in
                 guard let self = self else { return }
@@ -72,51 +50,68 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
 
+        model.onTrainingMenusChanged = { [weak self] in
+            guard let self = self else { return }
+            self.updateForSelectedTrainingMenu()
+        }
+
         // アプリ初回インストール時、サンプルトレーニングメニューを使用
         if !initialInstall {
             let initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
             model.appendTrainingMenu(initialTrainingMenu)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                trainingMenus.wrappedValue.append(initialTrainingMenu)
-                self.remainingTime = initialTrainingMenu.trainingTime
-                self.sets = initialTrainingMenu.sets
-                self.repetitions = initialTrainingMenu.repetitions
-                self.prepareTime = initialTrainingMenu.prepareTime
-                self.trainingTime = initialTrainingMenu.trainingTime
-                self.restTime = initialTrainingMenu.restTime
-                self.restBetweenSets = initialTrainingMenu.restBetweenSets
-                self.remainingSets = initialTrainingMenu.sets
-                self.remainingRepetitions = initialTrainingMenu.repetitions
-                self.remainingPrepareTime = initialTrainingMenu.prepareTime
-                self.remainingTrainingTime = initialTrainingMenu.trainingTime
-                self.remainingRestTime = initialTrainingMenu.restTime
-                self.remainingRestBetweenSets = initialTrainingMenu.restBetweenSets
-                self.navigationTitle = initialTrainingMenu.name
-            }
+            setTrainingMenu(selectedMenu: initialTrainingMenu)
             initialInstall = true
         } else {
-            if let selectedMenu = trainingMenus.wrappedValue.first(where: { $0.isSelected }) {
-                remainingTime = selectedMenu.trainingTime
-                sets = selectedMenu.sets
-                repetitions = selectedMenu.repetitions
-                prepareTime = selectedMenu.prepareTime
-                trainingTime = selectedMenu.trainingTime
-                restTime = selectedMenu.restTime
-                restBetweenSets = selectedMenu.restBetweenSets
-
-                remainingSets = selectedMenu.sets
-                remainingRepetitions = selectedMenu.repetitions
-                remainingPrepareTime = selectedMenu.prepareTime
-                remainingTrainingTime = selectedMenu.trainingTime
-                remainingRestTime = selectedMenu.restTime
-
-                remainingRestBetweenSets = selectedMenu.restBetweenSets
-                navigationTitle = selectedMenu.name
+            if let selectedMenu = model.trainingMenus.first(where: { $0.isSelected }) {
+                setTrainingMenu(selectedMenu: selectedMenu)
             }
         }
     }
 
+    private func updateForSelectedTrainingMenu() {
+        if let selectedMenu = model.trainingMenus.first(where: { $0.isSelected }) {
+            setTrainingMenu(selectedMenu: selectedMenu)
+        } else {
+            resetToDefaultValues()
+        }
+    }
+
+    private func setTrainingMenu(selectedMenu: TrainingMenu) {
+        remainingTime = selectedMenu.trainingTime
+        sets = selectedMenu.sets
+        repetitions = selectedMenu.repetitions
+        prepareTime = selectedMenu.prepareTime
+        trainingTime = selectedMenu.trainingTime
+        restTime = selectedMenu.restTime
+        restBetweenSets = selectedMenu.restBetweenSets
+
+        remainingPrepareTime = selectedMenu.prepareTime
+        remainingTrainingTime = selectedMenu.trainingTime
+        remainingRestTime = selectedMenu.restTime
+        remainingSets = selectedMenu.sets
+        remainingRepetitions = selectedMenu.repetitions
+        remainingRestBetweenSets = selectedMenu.restBetweenSets
+        navigationTitle = selectedMenu.name
+    }
+
+    private func resetToDefaultValues() {
+        remainingTime = 0
+        sets = 0
+        repetitions = 0
+        prepareTime = 0
+        trainingTime = 0
+        restTime = 0
+        restBetweenSets = 0
+
+        remainingPrepareTime = 0
+        remainingTrainingTime = 0
+        remainingRestTime = 0
+        remainingSets = 0
+        remainingRepetitions = 0
+        remainingRestBetweenSets = 0
+        navigationTitle = ""
+        currentTitle = Text(" ")
+    }
     private func updateTimer(for state: TrainingPhase) {
         switch state {
         case .running:

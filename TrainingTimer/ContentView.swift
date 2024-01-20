@@ -10,19 +10,18 @@ import GoogleMobileAds
 
 struct ContentView: View {
     @State private var selectedTab: Int = 1
-    @State var trainingMenus = TrainingModel().trainingMenus
 
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                HomeView(trainingMenus: $trainingMenus)
+                HomeView()
                     .tabItem {
                         Label("ホーム", systemImage: "house")
                             .font(.notoSans(style: .semiBold, size: 19))
                     }
                     .tag(1)
 
-                CustomizeTimerView(trainingMenus: $trainingMenus)
+                CustomizeTimerView()
                     .tabItem {
                         Label("追加・編集", systemImage: "clock.arrow.circlepath")
                     }

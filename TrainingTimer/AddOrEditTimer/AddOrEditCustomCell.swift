@@ -65,6 +65,6 @@ struct AddOrEditCustomCell: View {
     }
 }
 
-//#Preview {
-//    CustomizeTimerView()
-//}
+#Preview {
+    CustomizeTimerView()
+}

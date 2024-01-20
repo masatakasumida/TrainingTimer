@@ -10,13 +10,7 @@ import SwiftUI
 struct TrainingMenuCreationView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @Binding var trainingMenus: [TrainingMenu]
-    @StateObject private var viewModel: TrainingMenuCreationViewModel
-
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
-        self._viewModel = StateObject(wrappedValue: TrainingMenuCreationViewModel(trainingMenus: trainingMenus))
-    }
+    @StateObject private var viewModel = TrainingMenuCreationViewModel()
 
     var body: some View {
         VStack {
@@ -95,7 +89,6 @@ struct TrainingMenuCreationView: View {
     }
 }
 
-//#Preview {
-//    @Binding var trainingMenus: [TrainingMenu]
-//    TrainingMenuCreationView(trainingMenus: trainingMenus)
-//}
+#Preview {
+    TrainingMenuCreationView()
+}

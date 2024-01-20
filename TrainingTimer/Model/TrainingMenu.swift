@@ -1,19 +1,12 @@
 //
 //  Models.swift
-//  TrainingTimer
+//  TrainingMenu
 //
 //  Created by 住田雅隆 on 2023/12/24.
 //
 
-import Foundation
 import SwiftData
-
-enum TrainingPhase {
-    case ready
-    case running
-    case pause
-    case resume
-}
+import SwiftUI
 
 @Model
 final class TrainingMenu {
@@ -45,3 +38,29 @@ final class TrainingMenu {
     }
 }
 
+enum TrainingPhase {
+    case ready
+    case running
+    case pause
+    case resume
+}
+
+enum TrainingActivityStage {
+    case preparing
+    case training
+    case resting
+    case restBetweenSets
+
+    var title: Text {
+        switch self {
+        case .preparing:
+            return Text("準備")
+        case .training:
+            return Text("トレーニング")
+        case .resting:
+            return Text("休憩")
+        case .restBetweenSets:
+            return Text("セット間休憩")
+        }
+    }
+}

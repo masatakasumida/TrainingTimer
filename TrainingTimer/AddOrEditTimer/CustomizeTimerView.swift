@@ -9,28 +9,22 @@ import SwiftUI
 
 struct CustomizeTimerView: View {
 
-    @Binding var trainingMenus: [TrainingMenu]
-    @StateObject private var viewModel: CustomizeTimerViewModel
-
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
-        self._viewModel = StateObject(wrappedValue: CustomizeTimerViewModel(trainingMenus: trainingMenus))
-    }
+    @StateObject private var viewModel = CustomizeTimerViewModel()
 
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(trainingMenus.indices, id: \.self) { index in
-                        AddOrEditCustomCell(trainingMenu: trainingMenus[index], onEdit: {
+                    ForEach(viewModel.model.trainingMenus.indices, id: \.self) { index in
+                        AddOrEditCustomCell(trainingMenu: viewModel.model.trainingMenus[index], onEdit: {
                             // 編集ボタンのタップ時の処理
-                            print("\(trainingMenus[index].name) の編集ボタンがタップされました")
+                            print("\(viewModel.model.trainingMenus[index].name) の編集ボタンがタップされました")
                         }, onDelete: {
                             // 削除ボタンのタップ時の処理
-                            print("\(trainingMenus[index].name) の削除ボタンがタップされました")
+                            print("\(viewModel.model.trainingMenus[index].name) の削除ボタンがタップされました")
                             viewModel.deleteTrainingMenu(at: index)
                         }, onTap: {
-                            print("\(trainingMenus[index].name) のセルがタップされました")
+                            print("\(viewModel.model.trainingMenus[index].name) のセルがタップされました")
                             viewModel.setTrainingMenu(at: index)
                         })
                         .listRowSeparator(.hidden)
@@ -48,10 +42,10 @@ struct CustomizeTimerView: View {
                     }
                 } message: {
                     Text(viewModel.selectedIndex.map { index in
-                        guard trainingMenus.indices.contains(index) else {
+                        guard viewModel.model.trainingMenus.indices.contains(index) else {
                             return "削除するアイテムが見つかりませんでした。"
                         }
-                        return "\(trainingMenus[index].name) を削除してもよろしいですか？"
+                        return "\(viewModel.model.trainingMenus[index].name) を削除してもよろしいですか？"
                     } ?? "削除するアイテムが選択されていません。")
                 }
                 .alert("トレーニングのセット", isPresented: $viewModel.isSetShowAlert) {
@@ -61,16 +55,14 @@ struct CustomizeTimerView: View {
                     Button("キャンセル", role: .cancel) {}
                 } message: {
                     Text(viewModel.selectedIndex.map { index in
-                        guard trainingMenus.indices.contains(index) else {
+                        guard viewModel.model.trainingMenus.indices.contains(index) else {
                             return "セットするメニューが見つかりませんでした。"
                         }
-                        return "\(trainingMenus[index].name) をセットしますか？"
+                        return "\(viewModel.model.trainingMenus[index].name) をセットしますか？"
                     } ?? "トレーニングメニューが選択されていません。")
                 }
 
-
-
-                NavigationLink(destination: TrainingMenuCreationView(trainingMenus: $trainingMenus)) {
+                NavigationLink(destination: TrainingMenuCreationView()) {
                     Text("トレーニングを追加")
                         .font(.notoSans(style: .bold, size: 20))
                         .frame(maxWidth: .infinity)
@@ -89,6 +81,6 @@ struct CustomizeTimerView: View {
     }
 }
 
-//#Preview {
-//    CustomizeTimerView(trainingMenus: <#Binding<[TrainingMenu]>#>)
-//}
+#Preview {
+    CustomizeTimerView()
+}

@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Binding var trainingMenus: [TrainingMenu]
-    @StateObject private var viewModel: HomeViewModel
-
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
-        self._viewModel = StateObject(wrappedValue: HomeViewModel(trainingMenus: trainingMenus))
-    }
+    @StateObject private var viewModel = HomeViewModel()
 
     var body: some View {
         NavigationView {

@@ -8,10 +8,8 @@
 import SwiftUI
 
 class TrainingMenuCreationViewModel: ObservableObject {
-
-    @Binding var trainingMenus: [TrainingMenu]
-    @State private var model = TrainingModel()
-
+    var model = TrainingModel.shared
+    
     enum PickerSection: String, CaseIterable {
         case prepare
         case training
@@ -45,17 +43,13 @@ class TrainingMenuCreationViewModel: ObservableObject {
     @Published var selectedRepetitionsCount = 3
     @Published var selectedSetCount = 5
     @Published var selectedRestBetweenSetCount = 10
- 
+
     let prepareSeconds = Array(1...15)
     let trainingSeconds = Array(1...500)
     let restSeconds = Array(0...500)
     let repetitionsCounts = Array(1...30)
     let setCounts = Array(1...30)
     let restBetweenSetsSeconds = Array(1...500)
-
-    init(trainingMenus: Binding<[TrainingMenu]>) {
-        self._trainingMenus = trainingMenus
-    }
 
     func unitForPickerSection(_ section: PickerSection) -> String {
         switch section {
@@ -69,9 +63,8 @@ class TrainingMenuCreationViewModel: ObservableObject {
     }
 
     func saveTrainingMenu() {
-        let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: trainingMenus.count, isSelected: false)
+        let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: model.trainingMenus.count, isSelected: false)
         model.appendTrainingMenu(trainingMenu)
-        trainingMenus.append(trainingMenu)
     }
 }
 
