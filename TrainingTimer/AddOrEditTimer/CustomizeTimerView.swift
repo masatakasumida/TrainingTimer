@@ -12,19 +12,16 @@ struct CustomizeTimerView: View {
     @StateObject private var viewModel = CustomizeTimerViewModel()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List {
                     ForEach(viewModel.model.trainingMenus, id: \.id) { trainingMenu in
                         AddOrEditCustomCell(trainingMenu: trainingMenu, onEdit: {
-                            // 編集ボタンのタップ時の処理
-                            print("\(trainingMenu.name) の編集ボタンがタップされました")
+                            viewModel.startEditing(trainingMenu)
                         }, onDelete: {
-                            // 削除ボタンのタップ時の処理
-                            print("\(trainingMenu.name) の削除ボタンがタップされました")
                             viewModel.deleteTrainingMenu(at: trainingMenu.index)
                         }, onTap: {
-                            print("\(trainingMenu.name) のセルがタップされました")
+
                             viewModel.setTrainingMenu(at: trainingMenu.index)
                         })
                         .listRowSeparator(.hidden)
@@ -32,6 +29,8 @@ struct CustomizeTimerView: View {
                     }
                     .onMove(perform: move)
                 }
+
+
                 .listStyle(.inset)
                 .scrollContentBackground(.hidden)
                 .background(Color.whiteColor)
@@ -76,6 +75,9 @@ struct CustomizeTimerView: View {
                 .padding(.trailing, 20)
                 .padding(.bottom, 70)
                 .buttonStyle(CustomButtonStyle())
+            }
+            .navigationDestination(isPresented: $viewModel.isEditing) {
+                TrainingMenuCreationView(editingTrainingMenu: viewModel.editingTrainingMenu)
             }
         }
         .tint(.whiteColor)

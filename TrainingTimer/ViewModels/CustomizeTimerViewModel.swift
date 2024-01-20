@@ -11,8 +11,15 @@ class CustomizeTimerViewModel: ObservableObject {
     var model = TrainingModel.shared
     @Published var isDeleteShowAlert = false
     @Published var isSetShowAlert = false
+    @Published var editingTrainingMenu: TrainingMenu?
+    @Published var isEditing: Bool = false
 
     var selectedIndex: Int?
+
+    func startEditing(_ menu: TrainingMenu) {
+        editingTrainingMenu = menu
+        isEditing = true
+    }
 
     func deleteTrainingMenu(at index: Int) {
         selectedIndex = index

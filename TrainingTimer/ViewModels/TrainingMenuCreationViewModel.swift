@@ -9,7 +9,21 @@ import SwiftUI
 
 class TrainingMenuCreationViewModel: ObservableObject {
     var model = TrainingModel.shared
-    
+    var editingTrainingMenu: TrainingMenu?
+
+    init(editingTrainingMenu: TrainingMenu? = nil) {
+        self.editingTrainingMenu = editingTrainingMenu
+        if let editingMenu = editingTrainingMenu {
+            textValue = editingMenu.name
+            selectedPrepareSecond = editingMenu.prepareTime
+            selectedTrainingSecond = editingMenu.trainingTime
+            selectedRestSecond = editingMenu.restTime
+            selectedRepetitionsCount = editingMenu.repetitions
+            selectedSetCount = editingMenu.sets
+            selectedRestBetweenSetCount = editingMenu.restBetweenSets
+        }
+    }
+
     enum PickerSection: String, CaseIterable {
         case prepare
         case training
@@ -63,8 +77,20 @@ class TrainingMenuCreationViewModel: ObservableObject {
     }
 
     func saveTrainingMenu() {
-        let trainingMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: model.trainingMenus.count, isSelected: false)
-        model.appendTrainingMenu(trainingMenu)
+        if let editingMenu = editingTrainingMenu {
+            editingMenu.name = textValue
+            editingMenu.prepareTime = selectedPrepareSecond
+            editingMenu.trainingTime = selectedTrainingSecond
+            editingMenu.restTime = selectedRestSecond
+            editingMenu.repetitions = selectedRepetitionsCount
+            editingMenu.sets = selectedSetCount
+            editingMenu.restBetweenSets = selectedRestBetweenSetCount
+            model.updateTrainingMenu(editingMenu)
+        } else {
+            let newMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: model.trainingMenus.count, isSelected: false)
+            model.appendTrainingMenu(newMenu)
+        }
     }
 }
+
 

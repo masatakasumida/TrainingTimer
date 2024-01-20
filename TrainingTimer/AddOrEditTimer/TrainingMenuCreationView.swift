@@ -10,7 +10,11 @@ import SwiftUI
 struct TrainingMenuCreationView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel = TrainingMenuCreationViewModel()
+    @StateObject private var viewModel: TrainingMenuCreationViewModel
+
+    init(editingTrainingMenu: TrainingMenu? = nil) {
+        _viewModel = StateObject(wrappedValue: TrainingMenuCreationViewModel(editingTrainingMenu: editingTrainingMenu))
+    }
 
     var body: some View {
         VStack {
@@ -46,13 +50,13 @@ struct TrainingMenuCreationView: View {
                 }
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("新規作成")
+            .navigationTitle(viewModel.editingTrainingMenu == nil ? "新規作成" : "編集")
 
             Button(action: {
                 viewModel.saveTrainingMenu()
                 dismiss()
             }) {
-                Text("保存")
+                Text(viewModel.editingTrainingMenu == nil ? "保存" : "更新")
                     .font(.notoSans(style: .bold, size:20))
                     .frame(maxWidth: .infinity)
                     .padding()
