@@ -145,7 +145,7 @@
 				690A81D82B20A8F60012F215 /* ContentView.swift */,
 				6968589A2B46E79500AF2730 /* HomeView */,
 				6940B2392B47D3E200E4659D /* AddOrEditTimer */,
-				699CFDC82B25A65B004F581A /* SettingsView.swift */,
+				69C984002B5BC1B200298EC9 /* SettingView */,
 				6900CB5D2B5416F50031AEBA /* ViewModels */,
 				69A26B732B5170FB00956BB7 /* Model */,
 				698CE21E2B380FE000CCC680 /* CustomButtons */,
@@ -228,6 +228,14 @@
 				69C3173B2B469D8F00B49ECC /* BannerViewController.swift */,
 			);
 			path = Admob;
+			sourceTree = "<group>";
+		};
+		69C984002B5BC1B200298EC9 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				699CFDC82B25A65B004F581A /* SettingsView.swift */,
+			);
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 		69F7E3192B241F9800494FDF /* Font */ = {
