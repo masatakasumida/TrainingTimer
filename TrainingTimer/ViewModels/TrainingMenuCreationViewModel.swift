@@ -35,17 +35,17 @@ class TrainingMenuCreationViewModel: ObservableObject {
         var displayTitle: String {
             switch self {
             case .prepare:
-                return "準備時間"
+                return String(localized: "準備時間")
             case .training:
-                return "トレーニング時間"
+                return String(localized: "トレーニング時間")
             case .rest:
-                return "休憩時間"
+                return String(localized: "休憩時間")
             case .repetitions:
-                return "トレーニング回数"
+                return String(localized: "トレーニング回数")
             case .setCount:
-                return "セット数"
+                return String(localized: "セット数")
             case .restBetweenSets:
-                return "セット間の休憩時間"
+                return String(localized: "セット間の休憩時間")
             }
         }
     }
@@ -60,7 +60,7 @@ class TrainingMenuCreationViewModel: ObservableObject {
 
     let prepareSeconds = Array(1...15)
     let trainingSeconds = Array(1...500)
-    let restSeconds = Array(0...500)
+    let restSeconds = Array(1...500)
     let repetitionsCounts = Array(1...30)
     let setCounts = Array(1...30)
     let restBetweenSetsSeconds = Array(1...500)
@@ -68,11 +68,11 @@ class TrainingMenuCreationViewModel: ObservableObject {
     func unitForPickerSection(_ section: PickerSection) -> String {
         switch section {
         case .prepare, .training, .rest, .restBetweenSets:
-            return "秒"
+            return String(localized: "秒")
         case .setCount:
-            return "セット"
+            return String(localized: "セット")
         case .repetitions:
-            return "回"
+            return String(localized: "回")
         }
     }
 
