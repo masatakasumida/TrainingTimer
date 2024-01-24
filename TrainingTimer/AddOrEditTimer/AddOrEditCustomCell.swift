@@ -18,8 +18,10 @@ struct AddOrEditCustomCell: View {
             VStack(alignment: .leading) {
                 Text(trainingMenu.name)
                     .font(.notoSans(style: .semiBold, size: 17))
+                    .foregroundStyle(Color.textColor)
                 Text("\(trainingMenu.trainingTime)秒 × \(trainingMenu.repetitions)回 × \(trainingMenu.sets)セット")
                     .font(.notoSans(style: .regular, size: 15))
+                    .foregroundStyle(Color.textColor)
             }
             Spacer()
             HStack(spacing: 8) {

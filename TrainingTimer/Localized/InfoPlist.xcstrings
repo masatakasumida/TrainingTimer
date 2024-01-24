@@ -28,6 +28,12 @@
             "state" : "new",
             "value" : "TrainingTimer"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トレーニングタイマー"
+          }
         }
       }
     }

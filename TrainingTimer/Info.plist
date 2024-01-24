@@ -216,5 +216,16 @@
 		<string>NotoSansJP-Thin.ttf</string>
 		<string>NotoSansJP-VariableFont_wght.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackgroundColor</string>
+		<key>UIImageName</key>
+		<string>LaunchScreen</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

@@ -76,6 +76,7 @@ struct CustomizeTimerView: View {
                 .padding(.bottom, 70)
                 .buttonStyle(CustomButtonStyle())
             }
+            .background(Color.whiteColor)
             .navigationDestination(isPresented: $viewModel.isEditing) {
                 TrainingMenuCreationView(editingTrainingMenu: viewModel.editingTrainingMenu)
             }

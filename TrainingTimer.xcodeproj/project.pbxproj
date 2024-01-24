@@ -18,6 +18,7 @@
 		69291BC92B4ECB59009AD66D /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69291BC82B4ECB59009AD66D /* TrainingModel.swift */; };
 		693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693529272B414D4E0040FA12 /* ViewExtension.swift */; };
 		6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */; };
+		694D1B3C2B5D44F60018312F /* SoudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694D1B3B2B5D44F60018312F /* SoudModel.swift */; };
 		696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 696D2CC22B455519009D3771 /* Localizable.xcstrings */; };
 		6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
@@ -58,6 +59,7 @@
 		69291BC82B4ECB59009AD66D /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
 		693529272B414D4E0040FA12 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCustomCell.swift; sourceTree = "<group>"; };
+		694D1B3B2B5D44F60018312F /* SoudModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoudModel.swift; sourceTree = "<group>"; };
 		696D2CC22B455519009D3771 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationView.swift; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				69291BC82B4ECB59009AD66D /* TrainingModel.swift */,
 				691E29E62B37C09700E6817D /* TrainingMenu.swift */,
 				69FFA6D32B4D870E0075F8ED /* DatabaseManager.swift */,
+				694D1B3B2B5D44F60018312F /* SoudModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				694D1B3C2B5D44F60018312F /* SoudModel.swift in Sources */,
 				698CE2202B382AD900CCC680 /* HomeViewModel.swift in Sources */,
 				699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */,
 				690A81D92B20A8F60012F215 /* ContentView.swift in Sources */,
@@ -589,9 +593,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Timer";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -621,9 +626,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Timer";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

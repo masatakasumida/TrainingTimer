@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import AVFoundation
 
 class HomeViewModel: ObservableObject {
     @Published private(set) var firstProgressValue: CGFloat = 0.0
@@ -28,6 +29,7 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var currentTitle: Text = Text(" ")
     @AppStorage("firstInstall") var initialInstall = false
     var model = TrainingModel.shared
+    var effectSound = SoundModel()
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
     private var timer: Timer?
@@ -141,8 +143,12 @@ class HomeViewModel: ObservableObject {
     private func updateTimerProgress() {
         switch currentActivityPhase {
         case .preparing:
+
             remainingPrepareTime -= 1
             remainingTime = remainingPrepareTime
+
+                self.effectSound.trainingSound()
+
             if remainingPrepareTime <= 0 {
                 beginTrainingPeriod()
             }
@@ -150,6 +156,7 @@ class HomeViewModel: ObservableObject {
 
         case .training:
             remainingTrainingTime -= 1
+            effectSound.playSound()
             remainingTime = remainingTrainingTime
             if remainingTrainingTime <= 0 {
                 beginRestPeriod()
