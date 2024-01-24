@@ -21,6 +21,7 @@
 		694D1B3C2B5D44F60018312F /* SoudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694D1B3B2B5D44F60018312F /* SoudModel.swift */; };
 		696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 696D2CC22B455519009D3771 /* Localizable.xcstrings */; };
 		6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */; };
+		6983C0552B61B46A00479A47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6983C0542B61B46A00479A47 /* LaunchScreen.storyboard */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
 		698CE2202B382AD900CCC680 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21F2B382AD900CCC680 /* HomeViewModel.swift */; };
 		699CFDC52B25A56D004F581A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC42B25A56D004F581A /* HomeView.swift */; };
@@ -62,6 +63,7 @@
 		694D1B3B2B5D44F60018312F /* SoudModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoudModel.swift; sourceTree = "<group>"; };
 		696D2CC22B455519009D3771 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationView.swift; sourceTree = "<group>"; };
+		6983C0542B61B46A00479A47 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		698CE21F2B382AD900CCC680 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		699CFDC42B25A56D004F581A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				69F7E3192B241F9800494FDF /* Font */,
 				690A81DE2B20A8F70012F215 /* Preview Content */,
 				6918C4D32B45922300C6A473 /* Localized */,
+				6983C0532B61B41D00479A47 /* LaunchScreen */,
 			);
 			path = TrainingTimer;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				699CFDC42B25A56D004F581A /* HomeView.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		6983C0532B61B41D00479A47 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6983C0542B61B46A00479A47 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		698CE21E2B380FE000CCC680 /* CustomButtons */ = {
@@ -348,6 +359,7 @@
 				69F7E3292B241FBF00494FDF /* NotoSansJP-Light.ttf in Resources */,
 				696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */,
 				69F7E3242B241FBF00494FDF /* NotoSansJP-Bold.ttf in Resources */,
+				6983C0552B61B46A00479A47 /* LaunchScreen.storyboard in Resources */,
 				69E9BCE12B458B820068D8E9 /* InfoPlist.xcstrings in Resources */,
 				69F7E32B2B241FBF00494FDF /* NotoSansJP-VariableFont_wght.ttf in Resources */,
 				69F7E32C2B241FBF00494FDF /* NotoSansJP-ExtraLight.ttf in Resources */,
@@ -593,6 +605,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Timer";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -626,6 +639,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Timer";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
