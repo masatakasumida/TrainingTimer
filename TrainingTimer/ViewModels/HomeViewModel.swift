@@ -59,7 +59,7 @@ class HomeViewModel: ObservableObject {
 
         // アプリ初回インストール時、サンプルトレーニングメニューを使用
         if !initialInstall {
-            let initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 1, isSelected: true)
+            let initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
             model.appendTrainingMenu(initialTrainingMenu)
             setTrainingMenu(selectedMenu: initialTrainingMenu)
             initialInstall = true
