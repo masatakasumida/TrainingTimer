@@ -8,7 +8,7 @@
 import SwiftUI
 
 class CustomizeTimerViewModel: ObservableObject {
-    var model = TrainingModel.shared
+    let model = TrainingModel.shared
     @Published var isDeleteShowAlert = false
     @Published var isSetShowAlert = false
     @Published var editingTrainingMenu: TrainingMenu?

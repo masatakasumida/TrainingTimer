@@ -8,7 +8,7 @@
 import SwiftUI
 
 class TrainingMenuCreationViewModel: ObservableObject {
-    var model = TrainingModel.shared
+    let model = TrainingModel.shared
     var editingTrainingMenu: TrainingMenu?
 
     init(editingTrainingMenu: TrainingMenu? = nil) {

@@ -38,6 +38,8 @@ extension Color {
     static let controlPanelBackgroundColor = hex(0xEAF4FF)
     static let tabBarUnselectedColor = hex(0xB2D7FD)
     static let restBetweenSetsProgressBackgroundColor = hex(0xE4606D)
+    static let deleteButtonTitleColor = hex(0xD42A2A)
+    static let editButtonTitleColor = hex(0x0097FC)
 }
 
 extension UIColor {

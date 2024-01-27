@@ -8,42 +8,46 @@
 import SwiftUI
 import AVFoundation
 
-class SoundModel: NSObject {
-    
-    let effectOne = try! AVAudioPlayer(data: NSDataAsset(name: "sh_pickup03")!.data)
-    let effectTwo = try! AVAudioPlayer(data: NSDataAsset(name: "coin07")!.data)
-    let effectThree = try! AVAudioPlayer(data: NSDataAsset(name: "coin02")!.data)
-    let effectFour = try! AVAudioPlayer(data: NSDataAsset(name: "CH 808 Color A 6")!.data)
+class SoundModel: NSObject, AVAudioPlayerDelegate {
+    var effectOne: AVAudioPlayer!
+    var effectTwo: AVAudioPlayer!
+    var effectThree: AVAudioPlayer!
 
-    let effectSix = try! AVAudioPlayer(data: NSDataAsset(name: "sh_pickup01")!.data)
-    
-     func playSound() {
+    override init() {
+        super.init()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            // AudioPlayersの初期化
+            if let asset = NSDataAsset(name: "ClickOne") {
+                effectOne = try AVAudioPlayer(data: asset.data)
+            }
+            if let asset = NSDataAsset(name: "ClickTwo") {
+                effectTwo = try AVAudioPlayer(data: asset.data)
+            }
+            if let asset = NSDataAsset(name: "ClickThree") {
+                effectThree = try AVAudioPlayer(data: asset.data)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
+    func click() {
         effectOne.stop()
         effectOne.currentTime = 0
         effectOne.play()
     }
-    func trainingSound() {
-       effectSix.stop()
-       effectSix.currentTime = 0
-       effectSix.play()
-   }
-    func emphasisSound() {
-       effectTwo.stop()
-       effectTwo.currentTime = 0
-       effectTwo.play()
+
+    func countDown() {
+        effectTwo.stop()
+        effectTwo.currentTime = 0
+        effectTwo.play()
     }
-    func countDownSound() {
+
+    func countZeroSound() {
         effectThree.stop()
         effectThree.currentTime = 0
         effectThree.play()
     }
-    func intervalSound() {
-        effectFour.stop()
-        effectFour.currentTime = 0
-        effectFour.play()
-    }
-    
-    
-    
-
 }

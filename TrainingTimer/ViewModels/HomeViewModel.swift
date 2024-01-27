@@ -28,8 +28,8 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle: Text = Text(" ")
     @AppStorage("firstInstall") var initialInstall = false
-    var model = TrainingModel.shared
-    var effectSound = SoundModel()
+    let model = TrainingModel.shared
+    let effectSound = SoundModel()
 
     private var currentActivityPhase: TrainingActivityStage = .preparing
     private var timer: Timer?
@@ -56,7 +56,6 @@ class HomeViewModel: ObservableObject {
             guard let self = self else { return }
             self.updateForSelectedTrainingMenu()
         }
-
         // アプリ初回インストール時、サンプルトレーニングメニューを使用
         if !initialInstall {
             let initialTrainingMenu = TrainingMenu(name: "トレーニング", trainingTime: 20, restDuration: 2, repetitions: 2, sets: 2, restBetweenSets: 3, readyTime: 3, createdAt: Date(), index: 0, isSelected: true)
@@ -147,35 +146,42 @@ class HomeViewModel: ObservableObject {
             remainingPrepareTime -= 1
             remainingTime = remainingPrepareTime
 
-                self.effectSound.trainingSound()
-
             if remainingPrepareTime <= 0 {
+                effectSound.countZeroSound()
                 beginTrainingPeriod()
             }
             updateProgress(remainingPrepareTime, prepareTime)
 
         case .training:
             remainingTrainingTime -= 1
-            effectSound.playSound()
             remainingTime = remainingTrainingTime
             if remainingTrainingTime <= 0 {
+                effectSound.countZeroSound()
                 beginRestPeriod()
             }
-            if remainingTrainingTime <= 3 && remainingTrainingTime > 0 {
-                // TODO: 残り3秒の警告音を鳴らす
+            if remainingTrainingTime <= 2 && remainingTrainingTime > 0 {
+                effectSound.countDown()
             }
             updateProgress(remainingTrainingTime, trainingTime)
         case .resting:
             remainingRestTime -= 1
             remainingTime = remainingRestTime
+            if remainingRestTime <= 2 && remainingRestTime > 0 {
+                effectSound.countDown()
+            }
             if remainingRestTime <= 0 {
+                effectSound.countZeroSound()
                 beginNextSetOrRepetition()
             }
             updateProgress(remainingRestTime, restTime)
         case .restBetweenSets:
             remainingRestBetweenSets -= 1
             remainingTime = remainingRestBetweenSets
+            if remainingRestBetweenSets <= 2 && remainingRestBetweenSets > 0 {
+                effectSound.countDown()
+            }
             if remainingRestBetweenSets <= 0 {
+                effectSound.countZeroSound()
                 beginTrainingPeriod()
             }
             updateProgress(remainingRestBetweenSets, restBetweenSets)
@@ -277,6 +283,7 @@ class HomeViewModel: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.updateTimerProgress()
+            self.effectSound.click()
         }
     }
 

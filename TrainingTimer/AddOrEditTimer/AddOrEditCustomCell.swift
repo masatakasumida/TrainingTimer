@@ -26,27 +26,27 @@ struct AddOrEditCustomCell: View {
             Spacer()
             HStack(spacing: 8) {
                 Text("削除")
-                    .foregroundColor(.red)
+                    .foregroundColor(.deleteButtonTitleColor)
                     .font(.notoSans(style: .bold, size: 14))
                     .frame(width: 56, height: 32)
                     .background(.white)
                     .cornerRadius(3)
                     .overlay(
                         RoundedRectangle(cornerRadius: 3)
-                            .stroke(.red, lineWidth: 2)
+                            .stroke(Color.deleteButtonTitleColor, lineWidth: 2)
                     )
                     .onTapGesture {
                         onDelete()
                     }
                 Text("編集")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.editButtonTitleColor)
                     .font(.notoSans(style: .bold, size: 14))
                     .frame(width: 56, height: 32)
                     .background(.white)
                     .cornerRadius(3)
                     .overlay(
                         RoundedRectangle(cornerRadius: 3)
-                            .stroke(.blue, lineWidth: 2)
+                            .stroke(Color.editButtonTitleColor, lineWidth: 2)
                     )
                     .onTapGesture {
                         onEdit()
