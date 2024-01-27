@@ -71,6 +71,7 @@
 		699CFDC82B25A65B004F581A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		699CFDCB2B25A835004F581A /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		69A5B85D2B4A9EFF00DE69ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		69AC19B62B6547DD00CE6774 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		69C317392B469C1000B49ECC /* AdmobConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobConfig.swift; sourceTree = "<group>"; };
 		69C3173B2B469D8F00B49ECC /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		69E9BCE02B458B820068D8E9 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		690A81CA2B20A8F60012F215 = {
 			isa = PBXGroup;
 			children = (
+				69AC19B62B6547DD00CE6774 /* README.md */,
 				690A81D52B20A8F60012F215 /* TrainingTimer */,
 				69A5B85D2B4A9EFF00DE69ED /* GoogleService-Info.plist */,
 				690A81D42B20A8F60012F215 /* Products */,

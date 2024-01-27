@@ -183,6 +183,10 @@ class HomeViewModel: ObservableObject {
             if remainingRestBetweenSets <= 0 {
                 effectSound.countZeroSound()
                 beginTrainingPeriod()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                    guard let self = self else { return }
+                    self.remainingRestBetweenSets = restBetweenSets
+                }
             }
             updateProgress(remainingRestBetweenSets, restBetweenSets)
         }
@@ -221,10 +225,11 @@ class HomeViewModel: ObservableObject {
     private func beginNextSetOrRepetition() {
         if remainingRepetitions > 1 {
             self.currentActivityPhase = .training
+            remainingTime = remainingTrainingTime
         } else if remainingSets > 1 {
             currentActivityPhase = .restBetweenSets
+            remainingTime = remainingRestBetweenSets
         }
-        remainingTime = remainingTrainingTime
 
         if currentActivityPhase == .training {
 
