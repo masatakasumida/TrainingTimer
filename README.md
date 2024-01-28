@@ -12,5 +12,6 @@ CocoaPodsで導入しています。
 2: SwiftUIにおけるMVVMの試作  
 3: SwiftDataの使用  
 4: Observation Frameworkの使用  
-5: Figmaを使ってのアプリアイコンの制作  
-6: Logic Proを使ってのサウンドの制作
+5: Localize対応  
+6: Figmaを使ってのアプリアイコンの制作  
+7: Logic Proを使ってのサウンドの制作
