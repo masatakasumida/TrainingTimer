@@ -108,19 +108,19 @@ struct HomeView: View {
                 .padding(.bottom, geometry.size.height * 0.05)
                 .navigationTitle(viewModel.navigationTitle)
                 .navigationBarTitleDisplayMode(.inline)
-                // TODO: Home直接トレーニングメニューを編集できる機能
-//                .navigationBarItems(trailing: HStack(spacing: 0) {
-//                    Image(systemName: "clock.arrow.circlepath")
-//                        .foregroundStyle(Color.whiteColor)
-//                        .offset(x: 8)
-//                    Button(action: {
-//                        // ボタンのアクション
-//                    }) {
-//                        Text("編集")
-//                            .font(.notoSans(style: .semiBold, size: 16))
-//
-//                    }
-//                })
+                // TODO: Home直接トレーニングメニューを編集できる機能・・・navigationTitleが空文字の場合、navigationBarが無くなってしまうので、クリアーで出現させておく
+                .navigationBarItems(trailing: HStack(spacing: 0) {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .foregroundStyle(Color.clear)
+                        .offset(x: 8)
+                    Button(action: {
+                        // ボタンのアクション
+                    }) {
+                        //                        Text("編集")
+                        //                            .font(.notoSans(style: .semiBold, size: 16))
+
+                    }
+                })
             }
             .background(Color.whiteColor)
             .tint(Color.whiteColor)
