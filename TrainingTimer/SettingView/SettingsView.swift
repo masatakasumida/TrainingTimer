@@ -30,9 +30,8 @@ struct SettingsView: View {
     }
     
     var appVersion: String {
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-           let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
-            return "\(version) (\(build))"
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            return "\(version)"
         } else {
             return "不明"
         }
