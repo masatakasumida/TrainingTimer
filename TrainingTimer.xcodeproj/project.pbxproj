@@ -336,6 +336,9 @@
 				en,
 				Base,
 				ja,
+				"zh-Hans",
+				th,
+				vi,
 			);
 			mainGroup = 690A81CA2B20A8F60012F215;
 			productRefGroup = 690A81D42B20A8F60012F215 /* Products */;

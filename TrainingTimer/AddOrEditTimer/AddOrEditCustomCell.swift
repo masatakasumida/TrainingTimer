@@ -29,6 +29,8 @@ struct AddOrEditCustomCell: View {
                     .foregroundColor(.deleteButtonTitleColor)
                     .font(.notoSans(style: .bold, size: 14))
                     .frame(width: 56, height: 32)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
                     .background(.white)
                     .cornerRadius(3)
                     .overlay(
@@ -42,6 +44,8 @@ struct AddOrEditCustomCell: View {
                     .foregroundColor(.editButtonTitleColor)
                     .font(.notoSans(style: .bold, size: 14))
                     .frame(width: 56, height: 32)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
                     .background(.white)
                     .cornerRadius(3)
                     .overlay(
