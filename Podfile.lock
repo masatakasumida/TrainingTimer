@@ -111,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - FirebaseAnalytics
   - Google-Mobile-Ads-SDK
+  - GoogleUserMessagingPlatform
 
 SPEC REPOS:
   trunk:
@@ -149,6 +150,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
 
-PODFILE CHECKSUM: ca5738f12546ebd89989accd3ef0e1de7c9afe8b
+PODFILE CHECKSUM: 3cf80bed81ee2d273e0ffaf6dec9f73a3464f1c5
 
 COCOAPODS: 1.14.2

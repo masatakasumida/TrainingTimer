@@ -26,6 +26,28 @@ extension Color {
         })
     }
 
+    static let themeDefaultColor = Color.hex(0x4499E1) 
+
+    var hexValue: Int {
+           // ColorをUIColorに変換
+           let uiColor = UIColor(self)
+
+           // UIColorからRGBA成分を取得
+           var red: CGFloat = 0
+           var green: CGFloat = 0
+           var blue: CGFloat = 0
+           var alpha: CGFloat = 0
+           uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+           // RGBA成分をHex値に変換
+           let r = Int(red * 255) << 16
+           let g = Int(green * 255) << 8
+           let b = Int(blue * 255)
+
+           // Hex値を計算
+           return r + g + b
+       }
+
     static let textColor = hex(0x6D6D6D)
     static let whiteColor = hex(0xFDFCFF)
     static let toolBarColor = hex(0x4499E1)

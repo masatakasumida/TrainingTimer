@@ -10,7 +10,8 @@ target 'TrainingTimer' do
   pod 'FirebaseAnalytics'
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
-  
+  pod 'GoogleUserMessagingPlatform'
+
 end
 
 post_install do |installer|

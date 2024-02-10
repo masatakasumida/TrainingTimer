@@ -91,7 +91,7 @@ struct HomeView: View {
 
                             Text(String(viewModel.remainingTime))
                                 .font(.notoSans(style: .extraBold, size: geometry.size.height * 0.2))
-                                .foregroundStyle(Color.textColor)
+                                .foregroundStyle(ColorModel.shared.themeColor.textColor)
                             Spacer()
                             Spacer()
                         }

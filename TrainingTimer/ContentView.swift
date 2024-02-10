@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                     .tag(2)
 
-                SettingsView()
+                SettingView()
                     .tabItem {
                         Label("設定", systemImage: "gear")
                     }
