@@ -13,7 +13,7 @@ struct BannerView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {
         let banner = GADBannerView(adSize: GADAdSizeBanner)
         banner.adUnitID = AdMobConfig.AD_UNIT_ID_BANNER_CURRENT
-        banner.backgroundColor = .whiteColor
+        banner.backgroundColor = .backgroundColor
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let rootViewController = windowScene.windows.first?.rootViewController {
                 banner.rootViewController = rootViewController

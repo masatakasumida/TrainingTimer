@@ -65,6 +65,7 @@ extension UIColor {
 
     static let textColor = hex(0x6D6D6D)
     static let whiteColor = hex(0xFDFCFF)
+    static let backgroundColor = hex(0xFDFCFF) | hex(0x2c3c56)
     static let toolBarColor = hex(0x4499E1) | hex(0x19283D)
     static let startButtonColor = hex(0x4499E1)
     static let progressColor = hex(0x3394E0)
