@@ -25,15 +25,14 @@ struct CustomizeTimerView: View {
                             viewModel.setTrainingMenu(at: trainingMenu.index)
                         })
                         .listRowSeparator(.hidden)
-                        .listRowBackground(Color.whiteColor)
+                        .listRowBackground(Color.backgroundColor)
                     }
                     .onMove(perform: move)
                 }
 
-
                 .listStyle(.inset)
                 .scrollContentBackground(.hidden)
-                .background(Color.whiteColor)
+                .background(Color.backgroundColor)
                 .navigationTitle("トレーニングメニュー")
                 .navigationBarTitleDisplayMode(.inline)
                 .alert("削除の確認", isPresented: $viewModel.isDeleteShowAlert) {
@@ -76,7 +75,7 @@ struct CustomizeTimerView: View {
                 .padding(.bottom, 70)
                 .buttonStyle(CustomButtonStyle())
             }
-            .background(Color.whiteColor)
+            .background(Color.backgroundColor)
             .navigationDestination(isPresented: $viewModel.isEditing) {
                 TrainingMenuCreationView(editingTrainingMenu: viewModel.editingTrainingMenu)
             }

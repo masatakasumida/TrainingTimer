@@ -21,7 +21,7 @@ struct HomeView: View {
                                 ZStack (alignment: .top) {
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.controlPanelColor, lineWidth: 3)
-                                        .background(Color.whiteColor.cornerRadius(5))
+                                        .background(Color.backgroundColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.13)
                                         .overlay(
                                             Text(String(viewModel.remainingSets))
@@ -42,7 +42,7 @@ struct HomeView: View {
                                 ZStack (alignment: .top) {
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.controlPanelColor, lineWidth: 3)
-                                        .background(Color.whiteColor.cornerRadius(5))
+                                        .background(Color.backgroundColor.cornerRadius(5))
                                         .frame(width: geometry.size.width * 0.45, height: geometry.size.height * 0.13)
                                         .overlay(
                                             Text(String(viewModel.remainingRepetitions))
@@ -122,7 +122,7 @@ struct HomeView: View {
                     }
                 })
             }
-            .background(Color.whiteColor)
+            .background(Color.backgroundColor)
             .tint(Color.whiteColor)
         }
     }

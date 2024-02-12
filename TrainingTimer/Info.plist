@@ -4,6 +4,8 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8750826136327772~1671745092</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>By permitting, you will be shown ads optimized for you.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -215,6 +217,10 @@
 		<string>NotoSansJP-SemiBold.ttf</string>
 		<string>NotoSansJP-Thin.ttf</string>
 		<string>NotoSansJP-VariableFont_wght.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

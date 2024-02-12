@@ -19,7 +19,9 @@
 		693529282B414D4E0040FA12 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693529272B414D4E0040FA12 /* ViewExtension.swift */; };
 		6940B23B2B47D40500E4659D /* AddOrEditCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */; };
 		694D1B3C2B5D44F60018312F /* SoudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694D1B3B2B5D44F60018312F /* SoudModel.swift */; };
+		695558C62B79DB740090BBB1 /* AdmobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695558C52B79DB740090BBB1 /* AdmobManager.swift */; };
 		696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 696D2CC22B455519009D3771 /* Localizable.xcstrings */; };
+		697365462B791E4100EB67B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 697365452B791E4100EB67B4 /* GoogleService-Info.plist */; };
 		6982BAEC2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */; };
 		6983C0552B61B46A00479A47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6983C0542B61B46A00479A47 /* LaunchScreen.storyboard */; };
 		698CE21D2B380FDB00CCC680 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE21C2B380FDB00CCC680 /* CustomButton.swift */; };
@@ -28,7 +30,6 @@
 		699CFDC72B25A638004F581A /* CustomizeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC62B25A638004F581A /* CustomizeTimerView.swift */; };
 		699CFDC92B25A65B004F581A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDC82B25A65B004F581A /* SettingsView.swift */; };
 		699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699CFDCB2B25A835004F581A /* RoundedCorner.swift */; };
-		69A5B85E2B4A9EFF00DE69ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A5B85D2B4A9EFF00DE69ED /* GoogleService-Info.plist */; };
 		69C3173A2B469C1000B49ECC /* AdmobConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C317392B469C1000B49ECC /* AdmobConfig.swift */; };
 		69C3173C2B469D8F00B49ECC /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3173B2B469D8F00B49ECC /* BannerViewController.swift */; };
 		69E9BCE12B458B820068D8E9 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 69E9BCE02B458B820068D8E9 /* InfoPlist.xcstrings */; };
@@ -61,7 +62,9 @@
 		693529272B414D4E0040FA12 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		6940B23A2B47D40500E4659D /* AddOrEditCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCustomCell.swift; sourceTree = "<group>"; };
 		694D1B3B2B5D44F60018312F /* SoudModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoudModel.swift; sourceTree = "<group>"; };
+		695558C52B79DB740090BBB1 /* AdmobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobManager.swift; sourceTree = "<group>"; };
 		696D2CC22B455519009D3771 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		697365452B791E4100EB67B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6982BAEB2B4ADBB2004C8FD9 /* TrainingMenuCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCreationView.swift; sourceTree = "<group>"; };
 		6983C0542B61B46A00479A47 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		698CE21C2B380FDB00CCC680 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		699CFDC62B25A638004F581A /* CustomizeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTimerView.swift; sourceTree = "<group>"; };
 		699CFDC82B25A65B004F581A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		699CFDCB2B25A835004F581A /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
-		69A5B85D2B4A9EFF00DE69ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69AC19B62B6547DD00CE6774 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		69C317392B469C1000B49ECC /* AdmobConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobConfig.swift; sourceTree = "<group>"; };
 		69C3173B2B469D8F00B49ECC /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +130,6 @@
 			children = (
 				69AC19B62B6547DD00CE6774 /* README.md */,
 				690A81D52B20A8F60012F215 /* TrainingTimer */,
-				69A5B85D2B4A9EFF00DE69ED /* GoogleService-Info.plist */,
 				690A81D42B20A8F60012F215 /* Products */,
 				C0DE0BA4B7579CE7F5FCFEA5 /* Pods */,
 				5CF0A4ACAC28EDE0118EE814 /* Frameworks */,
@@ -159,6 +160,7 @@
 				69C317382B469BF100B49ECC /* Admob */,
 				69F7E3312B2420F900494FDF /* Extension */,
 				690A81DC2B20A8F70012F215 /* Assets.xcassets */,
+				697365452B791E4100EB67B4 /* GoogleService-Info.plist */,
 				69F7E3192B241F9800494FDF /* Font */,
 				690A81DE2B20A8F70012F215 /* Preview Content */,
 				6918C4D32B45922300C6A473 /* Localized */,
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				69C317392B469C1000B49ECC /* AdmobConfig.swift */,
+				695558C52B79DB740090BBB1 /* AdmobManager.swift */,
 				69C3173B2B469D8F00B49ECC /* BannerViewController.swift */,
 			);
 			path = Admob;
@@ -357,7 +360,6 @@
 			files = (
 				69F7E3252B241FBF00494FDF /* NotoSansJP-Regular.ttf in Resources */,
 				69F7E32D2B241FBF00494FDF /* NotoSansJP-Black.ttf in Resources */,
-				69A5B85E2B4A9EFF00DE69ED /* GoogleService-Info.plist in Resources */,
 				690A81E02B20A8F70012F215 /* Preview Assets.xcassets in Resources */,
 				69F7E3282B241FBF00494FDF /* NotoSansJP-Thin.ttf in Resources */,
 				69F7E3272B241FBF00494FDF /* NotoSansJP-SemiBold.ttf in Resources */,
@@ -365,6 +367,7 @@
 				696D2CC32B455519009D3771 /* Localizable.xcstrings in Resources */,
 				69F7E3242B241FBF00494FDF /* NotoSansJP-Bold.ttf in Resources */,
 				6983C0552B61B46A00479A47 /* LaunchScreen.storyboard in Resources */,
+				697365462B791E4100EB67B4 /* GoogleService-Info.plist in Resources */,
 				69E9BCE12B458B820068D8E9 /* InfoPlist.xcstrings in Resources */,
 				69F7E32B2B241FBF00494FDF /* NotoSansJP-VariableFont_wght.ttf in Resources */,
 				69F7E32C2B241FBF00494FDF /* NotoSansJP-ExtraLight.ttf in Resources */,
@@ -447,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				694D1B3C2B5D44F60018312F /* SoudModel.swift in Sources */,
+				695558C62B79DB740090BBB1 /* AdmobManager.swift in Sources */,
 				698CE2202B382AD900CCC680 /* HomeViewModel.swift in Sources */,
 				699CFDCC2B25A835004F581A /* RoundedCorner.swift in Sources */,
 				690A81D92B20A8F60012F215 /* ContentView.swift in Sources */,
@@ -614,7 +618,6 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,6 +627,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -650,7 +654,6 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,6 +663,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

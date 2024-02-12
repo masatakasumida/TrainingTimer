@@ -15,20 +15,22 @@ struct SettingsView: View {
                     HStack {
                         Text("バージョン")
                             .font(.notoSans(style: .regular, size: 16))
-                            .foregroundStyle(Color.black)
                         Spacer()
                         Text(appVersion)
                             .font(.notoSans(style: .regular, size: 16))
                             .foregroundStyle(Color.textColor)
                     }
+                    .listRowBackground(Color.customCellBackgroundColor)
                 }
             }
             .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .background(Color.tableViewBackgroundColor)
             .navigationTitle("設定")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-    
+
     var appVersion: String {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return "\(version)"

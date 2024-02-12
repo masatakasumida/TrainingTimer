@@ -31,7 +31,7 @@ struct AddOrEditCustomCell: View {
                     .frame(width: 56, height: 32)
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
-                    .background(.white)
+                    .background(Color.customCellBackgroundColor)
                     .cornerRadius(3)
                     .overlay(
                         RoundedRectangle(cornerRadius: 3)
@@ -46,7 +46,7 @@ struct AddOrEditCustomCell: View {
                     .frame(width: 56, height: 32)
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
-                    .background(.white)
+                    .background(Color.customCellBackgroundColor)
                     .cornerRadius(3)
                     .overlay(
                         RoundedRectangle(cornerRadius: 3)
@@ -58,7 +58,7 @@ struct AddOrEditCustomCell: View {
             }
         }
         .padding()
-        .background(Color.whiteColor)
+        .background(Color.customCellBackgroundColor)
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)

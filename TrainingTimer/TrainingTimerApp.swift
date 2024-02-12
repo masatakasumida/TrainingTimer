@@ -8,13 +8,10 @@
 import SwiftUI
 import SwiftData
 import Firebase
-import GoogleMobileAds
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
 }
@@ -35,11 +32,11 @@ struct TrainingTimerApp: App {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = UIColor.toolBarColor
         tabBarAppearance.stackedLayoutAppearance.normal.iconColor = .tabBarUnselectedColor
-        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = .whiteColor
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = .tabBarSelectedColor
 
         tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabBarUnselectedColor,
                                                                                NSAttributedString.Key.font: UIFont.notoSans(style: .semiBold, size: 11)]
-        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor,
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabBarSelectedColor,
                                                                                  NSAttributedString.Key.font: UIFont.notoSans(style: .semiBold, size: 11)]
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance

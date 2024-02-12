@@ -25,21 +25,24 @@ extension Color {
             }
         })
     }
-
-    static let textColor = hex(0x6D6D6D)
+    
+    static let textColor = hex(0x6D6D6D) | hex(0xFFFFFF)
     static let whiteColor = hex(0xFDFCFF)
-    static let toolBarColor = hex(0x4499E1)
+    static let backgroundColor = hex(0xFDFCFF) | hex(0x2c3c56)
+    static let tableViewBackgroundColor = hex(0xF2F2F7) | hex(0x2c3c56)
+    static let toolBarColor = hex(0x4499E1) | hex(0x19283D)
     static let startButtonColor = hex(0x4499E1)
     static let prepareProgressBackgroundColor = hex(0xEDE5FF)
     static let trainingProgressBackgroundColor = hex(0x3394E0)
     static let restProgressBackgroundColor = hex(0xB5E0D0)
-    static let progressColor = hex(0x808080)
-    static let controlPanelColor = hex(0x3394E0)
+    static let progressColor = hex(0x808080) | hex(0xB3B3B3)
+    static let controlPanelColor = hex(0x3394E0) | hex(0x03A2F2)
     static let controlPanelBackgroundColor = hex(0xEAF4FF)
     static let tabBarUnselectedColor = hex(0xB2D7FD)
     static let restBetweenSetsProgressBackgroundColor = hex(0xE4606D)
     static let deleteButtonTitleColor = hex(0xD42A2A)
     static let editButtonTitleColor = hex(0x0097FC)
+    static let customCellBackgroundColor = hex(0xFFFFFF) | hex(0x19283D)
 }
 
 extension UIColor {
@@ -62,10 +65,11 @@ extension UIColor {
 
     static let textColor = hex(0x6D6D6D)
     static let whiteColor = hex(0xFDFCFF)
-    static let toolBarColor = hex(0x4499E1)
+    static let toolBarColor = hex(0x4499E1) | hex(0x19283D)
     static let startButtonColor = hex(0x4499E1)
     static let progressColor = hex(0x3394E0)
     static let controlPanelColor = hex(0x3394E0)
     static let controlPanelBackgroundColor = hex(0xEAF4FF)
-    static let tabBarUnselectedColor = hex(0xB2D7FD)
+    static let tabBarUnselectedColor = hex(0xB2D7FD) | hex(0xFFFFFF)
+    static let tabBarSelectedColor = hex(0xFFFFFF) | hex(0x03A2F2)
 }

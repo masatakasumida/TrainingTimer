@@ -22,6 +22,5 @@ struct BannerView: UIViewRepresentable {
         banner.load(GADRequest())
         return banner
     }
-
     func updateUIView(_ uiView: GADBannerView, context: Context) {}
 }

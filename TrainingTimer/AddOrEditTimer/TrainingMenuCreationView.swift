@@ -21,35 +21,45 @@ struct TrainingMenuCreationView: View {
             List {
                 Section(header: Text("タイトル").font(.notoSans(style: .semiBold, size: 12))) {
                     TextField("トレーニング名", text: $viewModel.textValue)
+                        .submitLabel(.done)
                         .font(.notoSans(style: .regular, size: 16))
+                        .listRowBackground(Color.customCellBackgroundColor)
                 }
                 Section(header: Text("準備時間").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.prepare,
                                   value: $viewModel.selectedPrepareSecond,
                                   range: viewModel.prepareSeconds)
+                    .listRowBackground(Color.customCellBackgroundColor)
                 }
 
                 Section(header: Text("トレーニング").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.training,
                                   value: $viewModel.selectedTrainingSecond,
                                   range: viewModel.trainingSeconds)
+                    .listRowBackground(Color.customCellBackgroundColor)
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.rest,
                                   value: $viewModel.selectedRestSecond,
                                   range: viewModel.restSeconds)
+                    .listRowBackground(Color.customCellBackgroundColor)
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.repetitions,
                                   value: $viewModel.selectedRepetitionsCount,
                                   range: viewModel.repetitionsCounts)
+                    .listRowBackground(Color.customCellBackgroundColor)
                 }
                 Section(header: Text("セット").font(.notoSans(style: .semiBold, size: 12))) {
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.setCount,
                                   value: $viewModel.selectedSetCount,
                                   range: viewModel.setCounts)
+                    .listRowBackground(Color.customCellBackgroundColor)
                     pickerSection(title: TrainingMenuCreationViewModel.PickerSection.restBetweenSets,
                                   value: $viewModel.selectedRestBetweenSetCount,
                                   range: viewModel.restBetweenSetsSeconds)
+                    .listRowBackground(Color.customCellBackgroundColor)
                 }
             }
             .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .background(Color.tableViewBackgroundColor)
             .navigationTitle(viewModel.editingTrainingMenu == nil ? "新規作成" : "編集")
 
             Button(action: {
@@ -70,7 +80,7 @@ struct TrainingMenuCreationView: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
         }
-        .background(Color(UIColor.systemGroupedBackground))
+        .background(Color.tableViewBackgroundColor)
         .ignoresSafeArea(.keyboard, edges: .all)
     }
 
@@ -86,8 +96,7 @@ struct TrainingMenuCreationView: View {
                     .font(.notoSans(style: .regular, size: 16))
             }
         }
-        // 本当はmenuにしたいが、rangeの設定が大きくなると、画面遷移時にかなりもたつく
-        .pickerStyle(.navigationLink)
+        .pickerStyle(.menu)
         .font(.notoSans(style: .regular, size: 16))
         .tint(.textColor)
     }

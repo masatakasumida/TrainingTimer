@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GoogleMobileAds
 
 struct ContentView: View {
     @State private var selectedTab: Int = 1
@@ -40,6 +39,9 @@ struct ContentView: View {
         }
         // キーボードの出現時に自動レイアウトをキャンセルする
         .ignoresSafeArea(.keyboard, edges: .all)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            AdmobManager.configure()
+        }
     }
 }
 

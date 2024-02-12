@@ -72,6 +72,42 @@
           }
         }
       }
+    },
+    "NSUserTrackingUsageDescription" : {
+      "comment" : "Privacy - Tracking Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "By permitting, you will be shown ads optimized for you."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「許可」すると、あなたに最適化された広告が表示されます。"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เมื่อคุณ \"อนุญาต\" คุณจะเห็นโฆษณาที่ปรับให้เหมาะสมกับคุณ"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khi bạn \"đồng ý\", bạn sẽ nhìn thấy quảng cáo được tối ưu hóa cho bạn."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当您“同意”时，将向您展示经过优化的广告"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

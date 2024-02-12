@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '17.0'
+platform :ios, '17.0'
 
 target 'TrainingTimer' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,7 +10,8 @@ target 'TrainingTimer' do
   pod 'FirebaseAnalytics'
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
-  
+  pod 'GoogleUserMessagingPlatform'
+
 end
 
 post_install do |installer|
