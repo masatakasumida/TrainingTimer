@@ -23,8 +23,14 @@ class TrainingModel {
     }
 
     func appendTrainingMenu(_ trainingMenu: TrainingMenu) {
+        // 追加する前にtrainingMenusが空かどうかをチェック
+        let wasEmptyBeforeAdding = trainingMenus.isEmpty
         databaseManager.addTrainingMenu(trainingMenu: trainingMenu)
         trainingMenus.append(trainingMenu)
+        if wasEmptyBeforeAdding {
+            // trainingMenusが空だった場合、ここでonTrainingMenusChangedを発火
+            onTrainingMenusChanged?()
+        }
     }
 
     func removeItem(index: Int) {

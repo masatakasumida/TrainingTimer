@@ -105,6 +105,10 @@ struct HomeView: View {
                         pauseAndStopButtons(geometry: geometry)
                     }
                 }
+                .alert("トレーニングがセットされていません。", isPresented: $viewModel.showNotSetTrainingAlert) {
+                } message: {
+                    Text("追加・編集タブからトレーニングを作成してください。")
+                }
                 .padding(.bottom, geometry.size.height * 0.05)
                 .navigationTitle(viewModel.navigationTitle)
                 .navigationBarTitleDisplayMode(.inline)
@@ -129,8 +133,12 @@ struct HomeView: View {
 
     private func startButton(geometry: GeometryProxy) -> some View {
         Button(action: {
-            withAnimation(.easeInOut(duration: 0.3)) {
-                viewModel.changeTrainingState(to: .running)
+            if !viewModel.isSetTraining {
+                viewModel.showNotSetTrainingAlert = true
+            } else {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    viewModel.changeTrainingState(to: .running)
+                }
             }
         }) {
             Text("スタート")

@@ -33,6 +33,11 @@ class CustomizeTimerViewModel: ObservableObject {
         }
         model.removeItem(index: deleteMenuIndex)
         isDeleteShowAlert = false
+        // trainingMenusのカウントが1になった場合に、isSelectedをtrueに更新
+        if model.trainingMenus.count == 1 {
+            model.trainingMenus[0].isSelected = true
+            model.updateTrainingMenu(model.trainingMenus[0])
+        }
     }
 
     func setTrainingMenu(at index: Int) {

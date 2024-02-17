@@ -87,10 +87,10 @@ class TrainingMenuCreationViewModel: ObservableObject {
             editingMenu.restBetweenSets = selectedRestBetweenSetCount
             model.updateTrainingMenu(editingMenu)
         } else {
-            let newMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: model.trainingMenus.count, isSelected: false)
+            let isSelected = model.trainingMenus.isEmpty
+            let newMenu = TrainingMenu(name: textValue, trainingTime: selectedTrainingSecond, restDuration: selectedRestSecond, repetitions: selectedRepetitionsCount, sets: selectedSetCount, restBetweenSets: selectedRestBetweenSetCount, readyTime: selectedPrepareSecond, createdAt: Date(), index: model.trainingMenus.count, isSelected: isSelected
+            )
             model.appendTrainingMenu(newMenu)
         }
     }
 }
-
-

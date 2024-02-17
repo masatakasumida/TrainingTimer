@@ -15,10 +15,17 @@ struct SettingsView: View {
                     HStack {
                         Text("バージョン")
                             .font(.notoSans(style: .regular, size: 16))
+                            .foregroundStyle(Color.labelColor)
                         Spacer()
                         Text(appVersion)
                             .font(.notoSans(style: .regular, size: 16))
                             .foregroundStyle(Color.textColor)
+                    }
+                    .listRowBackground(Color.customCellBackgroundColor)
+                    Link(destination: URL(string: "https://itunes.apple.com/app/id6476809491?action=write-review")!) {
+                        Text("レビューをする")
+                            .font(.notoSans(style: .regular, size: 16))
+                            .foregroundStyle(Color.labelColor)
                     }
                     .listRowBackground(Color.customCellBackgroundColor)
                 }

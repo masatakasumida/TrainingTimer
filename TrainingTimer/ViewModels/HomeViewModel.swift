@@ -27,6 +27,7 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var secondProgressIsHidden = true
     @Published private(set) var navigationTitle = ""
     @Published private(set) var currentTitle: Text = Text(" ")
+    @Published var showNotSetTrainingAlert: Bool = false
     @AppStorage("firstInstall") var initialInstall = false
     let model = TrainingModel.shared
     let effectSound = SoundModel()
@@ -43,6 +44,7 @@ class HomeViewModel: ObservableObject {
     private var remainingTrainingTime: Int = 0
     private var remainingRestTime: Int = 0
     private var cancellables: Set<AnyCancellable> = []
+    private(set) var isSetTraining: Bool = false
 
     init() {
         $trainingPhase
@@ -62,9 +64,13 @@ class HomeViewModel: ObservableObject {
             model.appendTrainingMenu(initialTrainingMenu)
             setTrainingMenu(selectedMenu: initialTrainingMenu)
             initialInstall = true
+            isSetTraining = true
         } else {
             if let selectedMenu = model.trainingMenus.first(where: { $0.isSelected }) {
                 setTrainingMenu(selectedMenu: selectedMenu)
+                isSetTraining = true
+            } else {
+                isSetTraining = false
             }
         }
     }
@@ -72,8 +78,10 @@ class HomeViewModel: ObservableObject {
     private func updateForSelectedTrainingMenu() {
         if let selectedMenu = model.trainingMenus.first(where: { $0.isSelected }) {
             setTrainingMenu(selectedMenu: selectedMenu)
+            isSetTraining = true
         } else {
             resetToDefaultValues()
+            isSetTraining = false
         }
     }
 

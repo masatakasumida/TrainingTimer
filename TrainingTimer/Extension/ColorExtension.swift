@@ -25,8 +25,9 @@ extension Color {
             }
         })
     }
-    
+
     static let textColor = hex(0x6D6D6D) | hex(0xFFFFFF)
+    static let labelColor = hex(0x000000) | .whiteColor
     static let whiteColor = hex(0xFDFCFF)
     static let backgroundColor = hex(0xFDFCFF) | hex(0x2c3c56)
     static let tableViewBackgroundColor = hex(0xF2F2F7) | hex(0x2c3c56)
