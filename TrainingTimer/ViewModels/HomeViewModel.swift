@@ -126,10 +126,14 @@ class HomeViewModel: ObservableObject {
         switch state {
         case .running:
             startTimer()
+            // スリープを禁止する
+            UIApplication.shared.isIdleTimerDisabled = true
         case .pause:
             pauseTimer()
         case .ready:
             stopTimer()
+            // スリープを解除する
+            UIApplication.shared.isIdleTimerDisabled = false
         case .resume:
             resumeTimer()
         }
