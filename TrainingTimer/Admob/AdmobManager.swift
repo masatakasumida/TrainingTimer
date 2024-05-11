@@ -10,6 +10,7 @@ import GoogleMobileAds
 import UserMessagingPlatform
 import AdSupport
 import AppTrackingTransparency
+import FiveAd
 
 struct AdmobManager {
     static func configure() {
@@ -87,6 +88,10 @@ struct AdmobManager {
     private static func setupAdmob() async {
         print(#function)
         await GADMobileAds.sharedInstance().start()
+        let config: FADConfig = FADConfig(appId: AdMobConfig.FIVE_AD_ID)
+        config.isTest = AdMobConfig.FIVE_AD_ISTEST
+        config.enableSound(byDefault: false)
+        FADSettings.register(config)
     }
 
     private enum UMPError: Error {

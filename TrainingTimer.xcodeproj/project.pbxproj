@@ -306,6 +306,7 @@
 				690A81D12B20A8F60012F215 /* Resources */,
 				4FFF0E5BD5DF98AD270B7CF8 /* [CP] Embed Pods Frameworks */,
 				6918C4D42B4596B200C6A473 /* Firebase Crashlytics Run Script */,
+				22CFF4F431CB51C140D80105 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,6 +381,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		22CFF4F431CB51C140D80105 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrainingTimer/Pods-TrainingTimer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrainingTimer/Pods-TrainingTimer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrainingTimer/Pods-TrainingTimer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4FFF0E5BD5DF98AD270B7CF8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

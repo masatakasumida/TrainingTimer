@@ -11,6 +11,7 @@ target 'TrainingTimer' do
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
   pod 'GoogleUserMessagingPlatform'
+  pod 'FiveAd'
 
 end
 
