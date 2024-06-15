@@ -1,4 +1,4 @@
-# Training Timer
+# TrainingTimer_ios
 ## 開発環境
 - Xcode：15.1
 - Swift: 5.9.2 
