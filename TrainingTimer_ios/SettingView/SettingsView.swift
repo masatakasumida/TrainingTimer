@@ -22,16 +22,27 @@ struct SettingsView: View {
                             .foregroundStyle(Color.textColor)
                     }
                     .listRowBackground(Color.customCellBackgroundColor)
-                    Link(destination: URL(string: "https://training-timer-38c03.web.app")!) {
-                        Text("プライバシーポリシー")
-                            .font(.notoSans(style: .regular, size: 16))
-                            .foregroundStyle(Color.labelColor)
+
+                    HStack {
+                        Link(destination: URL(string: "https://training-timer-38c03.web.app")!) {
+                            Text("プライバシーポリシー")
+                                .font(.notoSans(style: .regular, size: 16))
+                                .foregroundStyle(Color.labelColor)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color.textColor)
                     }
                     .listRowBackground(Color.customCellBackgroundColor)
-                    Link(destination: URL(string: "https://itunes.apple.com/app/id6476809491?action=write-review")!) {
-                        Text("レビューをする")
-                            .font(.notoSans(style: .regular, size: 16))
-                            .foregroundStyle(Color.labelColor)
+                    HStack {
+                        Link(destination: URL(string: "https://itunes.apple.com/app/id6476809491?action=write-review")!) {
+                            Text("レビューをする")
+                                .font(.notoSans(style: .regular, size: 16))
+                                .foregroundStyle(Color.labelColor)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color.textColor)
                     }
                     .listRowBackground(Color.customCellBackgroundColor)
                 }
