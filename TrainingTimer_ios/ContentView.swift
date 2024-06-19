@@ -28,7 +28,12 @@ struct ContentView: View {
 
                 SettingsView()
                     .tabItem {
-                        Label("設定", systemImage: "gear")
+                        Label {
+                            Text("設定")
+                        } icon: {
+                            Image("setting")
+                                .renderingMode(.template)
+                        }
                     }
                     .tag(3)
             }
