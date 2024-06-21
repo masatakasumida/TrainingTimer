@@ -26,9 +26,9 @@ extension Color {
         })
     }
 
-    static let textColor = hex(0x6D6D6D) | hex(0xFFFFFF)
-    static let labelColor = hex(0x000000) | .whiteColor
-    static let whiteColor = hex(0xFDFCFF)
+    static let textColor = hex(0x6D6D6D) | hex(0xF2F2F2)
+    static let labelColor = hex(0x000000) | hex(0xF2F2F2)
+    static let whiteColor = hex(0xFDFCFF) | hex(0xF2F2F2)
     static let backgroundColor = hex(0xFDFCFF) | hex(0x2c3c56)
     static let tableViewBackgroundColor = hex(0xF2F2F7) | hex(0x2c3c56)
     static let toolBarColor = hex(0x4499E1) | hex(0x19283D)
@@ -64,8 +64,8 @@ extension UIColor {
         }
     }
 
-    static let textColor = hex(0x6D6D6D)
-    static let whiteColor = hex(0xFDFCFF)
+    static let textColor = hex(0x6D6D6D) | hex(0xF2F2F2)
+    static let whiteColor = hex(0xFDFCFF) | hex(0xF2F2F2)
     static let backgroundColor = hex(0xFDFCFF) | hex(0x2c3c56)
     static let toolBarColor = hex(0x4499E1) | hex(0x19283D)
     static let startButtonColor = hex(0x4499E1)
