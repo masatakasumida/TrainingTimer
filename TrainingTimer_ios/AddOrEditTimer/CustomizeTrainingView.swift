@@ -1,5 +1,5 @@
 //
-//  EditTimerView.swift
+//  CustomizeTrainingView.swift
 //  TrainingTimer_ios
 //
 //  Created by 住田雅隆 on 2023/12/10.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CustomizeTimerView: View {
+struct CustomizeTrainingView: View {
 
-    @StateObject private var viewModel = CustomizeTimerViewModel()
+    @StateObject private var viewModel = CustomizeTrainingViewModel()
 
     var body: some View {
         NavigationStack {
@@ -88,5 +88,5 @@ struct CustomizeTimerView: View {
 }
 
 #Preview {
-    CustomizeTimerView()
+    CustomizeTrainingView()
 }

@@ -1,5 +1,5 @@
 //
-//  CustomizeTimerViewModel.swift
+//  CustomizeTrainingViewModel.swift
 //  TrainingTimer_ios
 //
 //  Created by 住田雅隆 on 2024/01/14.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class CustomizeTimerViewModel: ObservableObject {
+class CustomizeTrainingViewModel: ObservableObject {
     let model = TrainingModel.shared
     @Published var isDeleteShowAlert = false
     @Published var isSetShowAlert = false

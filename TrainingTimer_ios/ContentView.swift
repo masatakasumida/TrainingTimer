@@ -20,7 +20,7 @@ struct ContentView: View {
                     }
                     .tag(1)
 
-                CustomizeTimerView()
+                CustomizeTrainingView()
                     .tabItem {
                         Label("追加・編集", systemImage: "clock.arrow.circlepath")
                     }

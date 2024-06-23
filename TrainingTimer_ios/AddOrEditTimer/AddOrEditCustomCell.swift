@@ -72,5 +72,5 @@ struct AddOrEditCustomCell: View {
 }
 
 #Preview {
-    CustomizeTimerView()
+    CustomizeTrainingView()
 }
