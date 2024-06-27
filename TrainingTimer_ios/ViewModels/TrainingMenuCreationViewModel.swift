@@ -65,6 +65,9 @@ class TrainingMenuCreationViewModel: ObservableObject {
     let setCounts = Array(1...30)
     let restBetweenSetsSeconds = Array(1...500)
 
+    @Published var showAlert = false
+    let alertMessage = String(localized: "トレーニング名を入力してください")
+
     func unitForPickerSection(_ section: PickerSection) -> String {
         switch section {
         case .prepare, .training, .rest, .restBetweenSets:
@@ -77,6 +80,11 @@ class TrainingMenuCreationViewModel: ObservableObject {
     }
 
     func saveTrainingMenu() {
+        if textValue.isEmpty {
+            showAlert = true
+            return
+        }
+
         if let editingMenu = editingTrainingMenu {
             editingMenu.name = textValue
             editingMenu.prepareTime = selectedPrepareSecond

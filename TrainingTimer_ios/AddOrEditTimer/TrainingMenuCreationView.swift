@@ -61,10 +61,11 @@ struct TrainingMenuCreationView: View {
             .scrollContentBackground(.hidden)
             .background(Color.tableViewBackgroundColor)
             .navigationTitle(viewModel.editingTrainingMenu == nil ? "新規作成" : "編集")
-
             Button(action: {
                 viewModel.saveTrainingMenu()
-                dismiss()
+                if !viewModel.showAlert {
+                    dismiss()
+                }
             }) {
                 Text(viewModel.editingTrainingMenu == nil ? "保存" : "更新")
                     .font(.notoSans(style: .bold, size:20))
@@ -81,6 +82,9 @@ struct TrainingMenuCreationView: View {
             .padding(.trailing, 20)
         }
         .background(Color.tableViewBackgroundColor)
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text(""), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }
         .ignoresSafeArea(.keyboard, edges: .all)
     }
 
