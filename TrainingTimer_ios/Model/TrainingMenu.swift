@@ -23,15 +23,15 @@ final class TrainingMenu {
     var isSelected: Bool // 選択しているトレーニング
 
 
-    init(name: String, trainingTime: Int,restDuration: Int, repetitions: Int, sets: Int, restBetweenSets: Int, readyTime: Int, createdAt: Date, index: Int, isSelected: Bool) {
+    init(name: String, trainingTime: Int,restTime: Int, repetitions: Int, sets: Int, restBetweenSets: Int, prepareTime: Int, createdAt: Date, index: Int, isSelected: Bool) {
         self.id = UUID().uuidString
         self.name = name
         self.trainingTime = trainingTime
-        self.restTime = restDuration
+        self.restTime = restTime
         self.repetitions = repetitions
         self.sets = sets
         self.restBetweenSets = restBetweenSets
-        self.prepareTime = readyTime
+        self.prepareTime = prepareTime
         self.creationAt = createdAt
         self.index = index
         self.isSelected = isSelected
