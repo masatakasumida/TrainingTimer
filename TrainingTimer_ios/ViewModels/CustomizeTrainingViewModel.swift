@@ -38,6 +38,7 @@ class CustomizeTrainingViewModel: ObservableObject {
             model.trainingMenus[0].isSelected = true
             model.updateTrainingMenu(model.trainingMenus[0])
         }
+        updateIndexes()
     }
 
     func setTrainingMenu(at index: Int) {
